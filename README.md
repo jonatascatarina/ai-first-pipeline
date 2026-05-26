@@ -43,9 +43,9 @@ Cada task em `specs/<FEATURE>/tasks.md` é uma unidade de trabalho autônoma. Ex
 ## Pipeline
 
 ```
-SPEC → CLARIFY → PLAN → TASKS → IMPLEMENT → ANALYZE
-  ↑                                              |
-  └──────────────────────────────────────────────┘
+SPEC → CLARIFY → PLAN → TASKS → IMPLEMENT → ANALYZE → REVIEW
+  ↑                                                         |
+  └─────────────────────────────────────────────────────────┘
 ```
 
 | Fase | Comando | Agente | Saída |
@@ -55,6 +55,7 @@ SPEC → CLARIFY → PLAN → TASKS → IMPLEMENT → ANALYZE
 | Planejar | `/speckit.plan` | Sonnet | `specs/<ID>/plan.md` |
 | Detalhar tasks | `/speckit.tasks` | Haiku | `specs/<ID>/tasks.md` |
 | Analisar | `/speckit.analyze` | Sonnet | `specs/<ID>/analysis-report.md` |
+| Revisar | `/speckit.review` | Sonnet | Comentário de PR copiável |
 
 ---
 

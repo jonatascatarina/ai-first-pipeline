@@ -12,9 +12,9 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 - Comando `/pr-checklist` (FEATURE-002): gera checklist de revisão categorizado (Segurança, Testes, Arquitetura, Documentação) a partir do título e descrição de um PR. Detecção de contexto por keywords, itens obrigatórios fixos, output copiável em bloco Markdown.
 - Comando `/speckit.changelog` (FEATURE-003): gera seção de changelog automaticamente a partir do git log cruzado com specs referenciadas nos commits. Classifica por prefixo convencional, agrupa múltiplos commits por spec e exige confirmação antes de escrever no CHANGELOG.md.
 - Comando `/speckit.standup` (FEATURE-004): gera mensagem de standup diário pronta para colar no Slack/Discord, traduzindo commits técnicos para linguagem de negócio. Trata segunda-feira automaticamente com `--since="last friday"`.
+- Comando `/speckit.review` (FEATURE-005): conduz revisão de código guiada por spec junto ao revisor humano. Apresenta cada critério de aceite com perguntas específicas, coleta avaliações (OK/PARCIAL/AUSENTE) e gera comentário de revisão formatado para colar no PR com veredicto (APROVADO/BLOQUEADO/CONDICIONALMENTE APROVADO).
 
 ### Planejado
-- Comando `/speckit.review` para revisão de código guiada por spec
 - Exemplo EXAMPLE-002 cobrindo autenticação OAuth2
 - Integração com GitHub Issues via template de spec
 
