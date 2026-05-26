@@ -1,6 +1,6 @@
 # ai-first-pipeline
 
-[![Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.0.0) [🇧🇷 Leia em português](./README.pt-BR.md)
+[![Release](https://img.shields.io/badge/release-v4.1.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.1.0) [🇧🇷 Leia em português](./README.pt-BR.md)
 
 Lightweight SDD pipeline for AI coding agents.
 Zero runtime dependencies, agent-agnostic, Markdown-only.

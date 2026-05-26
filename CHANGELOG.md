@@ -10,6 +10,15 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.1.0] — 2026-05-26
+
+### Alterado
+- Migração completa de prefixo: os 6 comandos restantes com prefixo `speckit.` renomeados para `sdd.`: `sdd.review`, `sdd.changelog`, `sdd.standup`, `sdd.issue`, `sdd.adr`, `sdd.epic`. Todos os 15 comandos do pipeline agora usam o prefixo `sdd.*`.
+- `lint.yml` corrigido: paths de verificação atualizados de `speckit.*` para `sdd.*` (os antigos causavam falha no CI por referenciar arquivos inexistentes)
+- `CONTRIBUTING.md`, `README.md`, `README.pt-BR.md`, `docs/tdd-ops-guide.md`: referências `speckit.*` restantes removidas
+
+---
+
 ## [4.0.0] — 2026-05-26
 
 ### Breaking Changes
