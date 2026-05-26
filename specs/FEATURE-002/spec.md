@@ -28,6 +28,7 @@ Um comando `/pr-checklist` que recebe título e descrição de PR como input e g
 - O checklist deve conter categorias fixas: Segurança, Testes, Arquitetura, Documentação
 - Cada categoria deve ter itens específicos derivados do contexto do PR (não genéricos)
 - O output deve ser diretamente copiável para um comentário de PR
+- Artefato opcional: `specs/<ID>/test-results.md` com casos de teste e resultados por critério de aceite (não gerado pelo comando, documentado manualmente após validação)
 
 ## SCOPE (Limite do sistema)
 
@@ -49,6 +50,8 @@ Um comando `/pr-checklist` que recebe título e descrição de PR como input e g
 **EARS-1 — Geração básica**
 WHEN the agent receives a PR title and description,
 THE SYSTEM SHALL generate a checklist with at minimum four sections: Segurança, Testes, Arquitetura, Documentação.
+IF no keywords are detected for a given section,
+THE SYSTEM SHALL display "Nenhum risco identificado nesta categoria para este PR." instead of omitting the section or generating generic items.
 
 **EARS-2 — Itens contextuais de segurança**
 WHEN the PR title or description contains keywords related to authentication, authorization, passwords, tokens, secrets, permissions, or user data,
@@ -78,7 +81,7 @@ THE SYSTEM SHALL always output valid GitHub-flavored Markdown with `- [ ]` check
 1. Dado título "Add JWT authentication to /api/users endpoint" e descrição adequada, o output contém seção `## Segurança` com ao menos 3 itens específicos sobre JWT, tokens e autenticação
 2. Dado qualquer input válido, o output contém as quatro seções obrigatórias
 3. Dado qualquer input válido, os dois itens obrigatórios (CHANGELOG e Spec) estão presentes
-4. Dado título com menos de 5 caracteres, o agente solicita mais informações antes de gerar
+4. Dado título com menos de 5 caracteres, o agente solicita mais informações antes de gerar — **pendente de validação** (não coberto em `test-results.md`; executar `/pr-checklist` com título de 1-4 caracteres e verificar o comportamento)
 5. O output é Markdown válido com checkboxes `- [ ]` e headers `##`
 6. Os itens gerados são específicos ao contexto do PR, não genéricos como "verificar se os testes passam"
 
