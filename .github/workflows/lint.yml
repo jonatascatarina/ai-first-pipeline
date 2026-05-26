@@ -1,0 +1,134 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: |
+          markdownlint \
+            --config .markdownlint.json \
+            "**/*.md" \
+            --ignore node_modules
+
+  check-structure:
+    name: Check Repository Structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          required_files=(
+            "README.md"
+            "constitution.md"
+            "CLAUDE.md"
+            "AGENTS.md"
+            "CONTRIBUTING.md"
+            "CHANGELOG.md"
+            ".claude/commands/speckit.constitution.md"
+            ".claude/commands/speckit.specify.md"
+            ".claude/commands/speckit.clarify.md"
+            ".claude/commands/speckit.plan.md"
+            ".claude/commands/speckit.tasks.md"
+            ".claude/commands/speckit.analyze.md"
+          )
+
+          all_ok=true
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "MISSING: $file"
+              all_ok=false
+            else
+              echo "OK: $file"
+            fi
+          done
+
+          if [ "$all_ok" = false ]; then
+            echo ""
+            echo "Required files are missing from the repository."
+            exit 1
+          fi
+
+  check-no-frontmatter:
+    name: Check No YAML Frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect YAML frontmatter in Markdown files
+        run: |
+          found=false
+          while IFS= read -r -d '' file; do
+            if head -1 "$file" | grep -q '^---$'; then
+              echo "FRONTMATTER DETECTED: $file"
+              found=true
+            fi
+          done < <(find . -name "*.md" -not -path "./node_modules/*" -print0)
+
+          if [ "$found" = true ]; then
+            echo ""
+            echo "YAML frontmatter is not allowed per constitution.md Artigo II."
+            exit 1
+          fi
+
+          echo "No YAML frontmatter found. All files comply."
+
+  check-spec-structure:
+    name: Check Spec Directory Structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify each spec directory has required files
+        run: |
+          required_spec_files=(
+            "spec.md"
+            "perguntas-respondidas.md"
+            "plan.md"
+            "tasks.md"
+            "analysis-report.md"
+          )
+
+          all_ok=true
+          for spec_dir in specs/*/; do
+            if [ -d "$spec_dir" ]; then
+              spec_id=$(basename "$spec_dir")
+              for file in "${required_spec_files[@]}"; do
+                if [ ! -f "${spec_dir}${file}" ]; then
+                  echo "MISSING: ${spec_dir}${file}"
+                  all_ok=false
+                fi
+              done
+            fi
+          done
+
+          if [ "$all_ok" = false ]; then
+            echo ""
+            echo "Spec directories are missing required files."
+            echo "Each spec must have: spec.md, perguntas-respondidas.md, plan.md, tasks.md, analysis-report.md"
+            exit 1
+          fi
+
+          echo "All spec directories have required files."

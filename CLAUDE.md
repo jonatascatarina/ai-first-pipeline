@@ -1,0 +1,83 @@
+# CLAUDE.md — Instruções para Agentes Claude
+
+Este arquivo configura o comportamento dos agentes Claude neste repositório. Leia integralmente antes de executar qualquer tarefa.
+
+---
+
+## Model Routing
+
+| Modelo | Tarefas | Fases do Pipeline |
+|--------|---------|-------------------|
+| `claude-haiku-4-5` | Geração de tasks, formatação, checklists, scaffold de arquivos | T1 (init), T6 (tasks), T8 (lint/format) |
+| `claude-sonnet-4-6` | Especificação, clarificação, análise, planejamento, revisão | T2 (specify), T3 (clarify), T4 (plan), T5 (implement review), T7 (analyze) |
+
+**Regra de escalonamento:** Se uma tarefa rotulada para Haiku exigir raciocínio sobre trade-offs ou ambiguidade de requisitos, escalone para Sonnet e registre o motivo no output.
+
+---
+
+## Contexto do Repositório
+
+- Este repositório é um **template de processo**, não um produto de software
+- Todos os arquivos são Markdown puro — sem frontmatter YAML, sem código executável
+- A estrutura de `specs/` é a fonte de verdade do que deve ser construído
+- `constitution.md` define as regras que você deve seguir sem exceção
+
+---
+
+## Comportamento Esperado
+
+### Ao receber uma task de spec
+
+1. Leia `constitution.md` completo
+2. Leia a spec existente em `specs/<ID>/spec.md` se houver
+3. Identifique ambiguidades antes de produzir output
+4. Use o comando `/speckit.clarify` para formalizar perguntas
+
+### Ao receber uma task de plano
+
+1. Verifique que `perguntas-respondidas.md` está completo (sem `TBD` em aberto)
+2. Identifique riscos de segurança e privacidade explicitamente
+3. Referencie ADRs existentes em `docs/adr/` quando relevante
+4. Proponha novo ADR se a decisão tiver impacto arquitetural
+
+### Ao receber uma task de análise
+
+1. Analise conformidade com a spec, não apenas com boas práticas genéricas
+2. Liste findings com severidade: `BLOCKER`, `WARNING`, `SUGGESTION`
+3. Findings `BLOCKER` impedem merge — liste ação corretiva obrigatória
+4. Salve resultado em `specs/<ID>/analysis-report.md`
+
+---
+
+## Regras de Formatação
+
+- Headings com `#` a `###` apenas (sem `####` ou mais profundo em specs)
+- Listas com `-` (não `*` ou `+`)
+- Blocos de código sempre com linguagem especificada
+- Tabelas com header separado por `---`
+- Sem emojis em documentos de spec ou plano
+- Sem frontmatter YAML em nenhum arquivo
+
+---
+
+## O Que Não Fazer
+
+- Não invente requisitos que não estão na spec
+- Não tome decisões de arquitetura sem registrar ADR
+- Não modifique `constitution.md` sem instrução explícita do usuário
+- Não crie arquivos fora da estrutura definida em `README.md`
+- Não use linguagem vaga ("talvez", "pode ser", "geralmente") em critérios de aceite
+- Não avance para a fase seguinte se a fase atual tiver itens em aberto
+
+---
+
+## Comandos Disponíveis
+
+| Comando | Descrição |
+|---------|-----------|
+| `/speckit.constitution` | Define ou atualiza a constituição do projeto |
+| `/speckit.specify` | Cria spec detalhada de uma feature |
+| `/speckit.clarify` | Gera perguntas de clarificação para uma spec |
+| `/speckit.plan` | Cria plano de implementação a partir da spec |
+| `/speckit.tasks` | Decompõe o plano em tasks executáveis |
+| `/speckit.analyze` | Analisa código ou spec e gera relatório |
