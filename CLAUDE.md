@@ -8,10 +8,23 @@ Este arquivo configura o comportamento dos agentes Claude neste repositório. Le
 
 | Modelo | Tarefas | Fases do Pipeline |
 |--------|---------|-------------------|
-| `claude-haiku-4-5` | Geração de tasks, formatação, checklists, scaffold de arquivos | T1 (init), T6 (tasks), T8 (lint/format) |
-| `claude-sonnet-4-6` | Especificação, clarificação, análise, planejamento, revisão | T2 (specify), T3 (clarify), T4 (plan), T5 (implement review), T7 (analyze) |
+| `claude-haiku-4-5` | Geração de tasks, formatação, checklists, scaffold de arquivos, refatoração simples | T1 (init), T6 (tasks), T7 (refactor), T8 (lint/format) |
+| `claude-sonnet-4-6` | Especificação, clarificação, análise, planejamento, revisão, TDD, auditoria de segurança | T2 (specify), T3 (clarify), T4 (plan), T5 (write tests + implement), T9 (sec audit), T10 (review) |
 
 **Regra de escalonamento:** Se uma tarefa rotulada para Haiku exigir raciocínio sobre trade-offs ou ambiguidade de requisitos, escalone para Sonnet e registre o motivo no output.
+
+---
+
+## Agentes Especializados
+
+| Agente | Arquivo | Fase |
+|--------|---------|------|
+| TDDTestWriter | `.claude/agents/tdd-test-writer.md` | Passo 5 — escrever testes antes da implementação |
+| TDDImplementer | `.claude/agents/tdd-implementer.md` | Passo 6 — implementar código para testes passarem |
+| RefactorAgent | `.claude/agents/refactor.md` | Passo 7 — limpar código com testes verdes |
+| SecurityAuditor | `.claude/agents/security-auditor.md` | Passo 9 — auditar segurança antes do merge |
+
+Cada agente tem escopo estrito definido em seu arquivo. Cruzamento de responsabilidades é anti-padrão.
 
 ---
 

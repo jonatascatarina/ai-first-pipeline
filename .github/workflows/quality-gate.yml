@@ -1,0 +1,120 @@
+# TEMPLATE — Quality Gate
+#
+# Este arquivo é um template documentado e não executável.
+# Substitua os comandos placeholder pelos do seu projeto antes de ativar.
+# O trigger está configurado como manual (workflow_dispatch) para evitar
+# execução acidental enquanto os comandos não estiverem configurados.
+#
+# Ative o quality gate automático trocando o bloco 'on' para:
+#   on:
+#     pull_request:
+#       branches: [main]
+
+name: Quality Gate
+
+on:
+  workflow_dispatch:
+    # Trigger manual — substitua por pull_request após configurar os comandos
+
+jobs:
+
+  # ------------------------------------------------------------------
+  # Etapa 1: Lint
+  # Verifica formatação, estilo e regras estáticas antes de rodar testes.
+  # Falhar rápido aqui evita consumir tempo de CI com código mal formatado.
+  # ------------------------------------------------------------------
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint de Markdown
+        # Valida arquivos .md contra as regras de .markdownlint.json
+        run: |
+          # TODO: substitua pelo comando de lint do seu projeto
+          # Exemplo para Markdown: npx markdownlint-cli "**/*.md"
+          # Exemplo para Python:   ruff check .
+          # Exemplo para Node:     npm run lint
+          echo "Configure seu comando de lint aqui"
+
+  # ------------------------------------------------------------------
+  # Etapa 2: Testes
+  # Executa a suíte de testes após o lint passar.
+  # Esta etapa valida conformidade com os critérios de aceite da spec.
+  # ------------------------------------------------------------------
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Testes unitários
+        run: |
+          # TODO: substitua pelo comando de teste do seu projeto
+          # Exemplo para Node:   npm test
+          # Exemplo para Python: pytest --cov=src --cov-fail-under=80
+          # Exemplo para Go:     go test ./...
+          echo "Configure seu comando de teste aqui"
+
+      - name: Cobertura mínima
+        run: |
+          # TODO: configure o limiar de cobertura exigido pela spec
+          # O limiar deve ser declarado em specs/<ID>/tasks.md (tdd-test-writer)
+          echo "Configure sua verificação de cobertura aqui"
+
+  # ------------------------------------------------------------------
+  # Etapa 3: Security Scan
+  # Analisa dependências e código em busca de vulnerabilidades conhecidas.
+  # Findings BLOCKER do security-auditor devem ser resolvidos antes do merge
+  # (Artigo VI.3 da constituição).
+  # ------------------------------------------------------------------
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Scan de dependências
+        run: |
+          # TODO: substitua pela ferramenta de análise de dependências do seu projeto
+          # Exemplo para Node:   npm audit --audit-level=high
+          # Exemplo para Python: pip-audit
+          # Exemplo para Go:     govulncheck ./...
+          echo "Configure seu scan de dependências aqui"
+
+      - name: Scan de secrets
+        run: |
+          # TODO: detecta credenciais hardcoded no código
+          # Exemplo: gitleaks detect --source . --verbose
+          # Exemplo: trufflehog filesystem .
+          echo "Configure seu scan de secrets aqui"
+
+  # ------------------------------------------------------------------
+  # Etapa 4: Build
+  # Verifica que o artefato final compila/empacota sem erros.
+  # Esta etapa confirma que o código está pronto para deploy.
+  # Para projetos Markdown-only (como este template), esta etapa
+  # valida a geração de documentação ou site estático se aplicável.
+  # ------------------------------------------------------------------
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: security-scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          # TODO: substitua pelo comando de build do seu projeto
+          # Exemplo para Node:   npm run build
+          # Exemplo para Python: python -m build
+          # Exemplo para Go:     go build ./...
+          # Para projetos Markdown-only: deixe este step como echo ou remova a etapa
+          echo "Configure seu comando de build aqui"

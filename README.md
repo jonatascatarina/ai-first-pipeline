@@ -51,19 +51,46 @@ Para times que usam o issue tracker do GitHub:
 ## Pipeline
 
 ```
-SPEC → CLARIFY → PLAN → TASKS → IMPLEMENT → ANALYZE → REVIEW
-  ↑                                                         |
-  └─────────────────────────────────────────────────────────┘
+ 1. SPEC      2. CLARIFY   3. PLAN      4. TASKS
+      ↓             ↓           ↓            ↓
+ 5. WRITE     6. IMPLEMENT  7. REFACTOR  8. ANALYZE
+   TESTS
+      ↓             ↓           ↓            ↓
+ 9. SEC AUDIT 10. REVIEW  11. QUALITY  12. CHANGELOG
+                              GATE
+                                           ↓
+                                      13. STANDUP
 ```
 
-| Fase | Comando | Agente | Saída |
-|------|---------|--------|-------|
-| Especificar | `/speckit.specify` | Sonnet | `specs/<ID>/spec.md` |
-| Clarificar | `/speckit.clarify` | Sonnet | `specs/<ID>/perguntas-respondidas.md` |
-| Planejar | `/speckit.plan` | Sonnet | `specs/<ID>/plan.md` |
-| Detalhar tasks | `/speckit.tasks` | Haiku | `specs/<ID>/tasks.md` |
-| Analisar | `/speckit.analyze` | Sonnet | `specs/<ID>/analysis-report.md` |
-| Revisar | `/speckit.review` | Sonnet | Comentário de PR copiável |
+### Camada 1 — SDD
+
+| Passo | Comando | Agente | Saída |
+|-------|---------|--------|-------|
+| 1. Especificar | `/speckit.specify` | Sonnet | `specs/<ID>/spec.md` |
+| 2. Clarificar | `/speckit.clarify` | Sonnet | `specs/<ID>/perguntas-respondidas.md` |
+| 3. Planejar | `/speckit.plan` | Sonnet | `specs/<ID>/plan.md` |
+| 4. Detalhar tasks | `/speckit.tasks` | Haiku | `specs/<ID>/tasks.md` |
+
+### Camada 2 — TDD
+
+| Passo | Agente | Saída |
+|-------|--------|-------|
+| 5. Escrever testes | `tdd-test-writer` | Suíte de testes baseada na spec |
+| 6. Implementar | `tdd-implementer` | Código mínimo para testes passarem |
+| 7. Refatorar | `refactor` | Código limpo, testes ainda verdes |
+
+### Camada 3 — OPS
+
+| Passo | Comando / Agente | Saída |
+|-------|-----------------|-------|
+| 8. Analisar | `/speckit.analyze` | `specs/<ID>/analysis-report.md` |
+| 9. Auditar segurança | `security-auditor` | Relatório com BLOCKERs |
+| 10. Revisar | `/speckit.review` | Comentário de PR copiável |
+| 11. Quality gate | `quality-gate.yml` | lint → test → sec-scan → build |
+| 12. Changelog | `/speckit.changelog` | `CHANGELOG.md` atualizado |
+| 13. Standup | `/speckit.standup` | Resumo para o time |
+
+Veja `docs/tdd-ops-guide.md` para o guia completo de ativação das camadas 2 e 3.
 
 ---
 
@@ -77,9 +104,17 @@ ai-first-pipeline/
 ├── AGENTS.md               ← definição dos agentes
 ├── CONTRIBUTING.md         ← como contribuir
 ├── CHANGELOG.md            ← histórico de versões
-├── .claude/commands/       ← comandos /speckit.*
+├── .claude/
+│   ├── commands/           ← comandos /speckit.*
+│   ├── agents/             ← agentes TDD: test-writer, implementer, refactor, security-auditor
+│   └── hooks/              ← pre-tool-use: regras de proteção de arquivos
 ├── .github/
-│   └── ISSUE_TEMPLATE/     ← template de Issue para features (SDD)
+│   ├── ISSUE_TEMPLATE/     ← template de Issue para features (SDD)
+│   └── workflows/
+│       └── quality-gate.yml ← pipeline CI: lint → test → sec-scan → build (configure antes de ativar)
+├── docs/
+│   ├── adr/                ← Architecture Decision Records
+│   └── tdd-ops-guide.md    ← guia das camadas TDD e OPS
 ├── specs/                  ← specs de features
 │   ├── EXAMPLE-001/        ← exemplo: rate limiting (sliding window + Redis)
 │   └── EXAMPLE-002/        ← exemplo: autenticação OAuth2 com GitHub (PKCE)
