@@ -8,10 +8,39 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [Não lançado]
 
+---
+
+## [3.0.0] — 2026-05-26
+
 ### Adicionado
 - Comando `/speckit.adr`: guia a criação interativa de ADRs com contexto, decisão, alternativas consideradas e consequências. Status inicial `Em revisão`, imutável após aprovação (Artigo VII.3).
 - Comando `/speckit.epic`: decompõe iniciativas grandes em features com mapa de dependências, estimativas de complexidade (P/M/G), sequência de entrega por fases e caminho crítico. Gera `specs/EPIC-NNN/epic.md` e stubs opcionais de features filho.
 - Agente `onboarding`: gera resumo de contexto completo do projeto para um agente novo — versão atual, features com status inferido, ADRs, bloqueadores e próximos passos recomendados. Zero modificação de arquivos.
+
+### Pipeline completo em v3.0.0
+
+13 comandos e 5 agentes especializados:
+
+| Tipo | Nome | Responsabilidade |
+|------|------|-----------------|
+| Comando | `/speckit.constitution` | Define a constituição do projeto |
+| Comando | `/speckit.specify` | Cria spec de feature |
+| Comando | `/speckit.clarify` | Gera perguntas de clarificação |
+| Comando | `/speckit.plan` | Cria plano de implementação |
+| Comando | `/speckit.tasks` | Decompõe plano em tasks |
+| Comando | `/speckit.analyze` | Analisa conformidade com spec |
+| Comando | `/speckit.review` | Revisão guiada por spec |
+| Comando | `/speckit.changelog` | Gera seção de changelog |
+| Comando | `/speckit.standup` | Gera resumo de standup |
+| Comando | `/speckit.issue` | Integração com GitHub Issues |
+| Comando | `/speckit.adr` | Cria Architecture Decision Record |
+| Comando | `/speckit.epic` | Planeja iniciativas multi-feature |
+| Comando | `/pr-checklist` | Checklist de revisão de PR |
+| Agente | `tdd-test-writer` | Escreve testes antes da implementação |
+| Agente | `tdd-implementer` | Implementa código para testes passarem |
+| Agente | `refactor` | Limpa código com testes verdes |
+| Agente | `security-auditor` | Audita segurança antes do merge |
+| Agente | `onboarding` | Contextualiza agentes novos |
 
 ---
 
