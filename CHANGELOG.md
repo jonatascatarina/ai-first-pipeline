@@ -14,9 +14,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 - Comando `/speckit.standup` (FEATURE-004): gera mensagem de standup diário pronta para colar no Slack/Discord, traduzindo commits técnicos para linguagem de negócio. Trata segunda-feira automaticamente com `--since="last friday"`.
 - Comando `/speckit.review` (FEATURE-005): conduz revisão de código guiada por spec junto ao revisor humano. Apresenta cada critério de aceite com perguntas específicas, coleta avaliações (OK/PARCIAL/AUSENTE) e gera comentário de revisão formatado para colar no PR com veredicto (APROVADO/BLOQUEADO/CONDICIONALMENTE APROVADO).
 - Exemplo `EXAMPLE-002`: spec completa de autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE). Cobre fluxo frontend/backend, migration de banco, análise de riscos de segurança (client_secret, CSRF, open redirect, replay de code) e 10 tasks incluindo task SEC prioritária.
-
-### Planejado
-- Integração com GitHub Issues via template de spec
+- Integração bidirecional com GitHub Issues (FEATURE-006): template de Issue estruturado em `.github/ISSUE_TEMPLATE/feature-spec.md` e comando `/speckit.issue` que publica specs como Issues ou converte Issues em scaffolds de spec.
 
 ---
 
