@@ -38,6 +38,12 @@ gh repo create meu-projeto --template jonatascatarina/ai-first-pipeline
 
 Cada task em `specs/<FEATURE>/tasks.md` é uma unidade de trabalho autônoma. Execute com seu agente preferido.
 
+**6. (Opcional) Integre com GitHub Issues**
+
+Para times que usam o issue tracker do GitHub:
+- Abra Issues usando o template em `.github/ISSUE_TEMPLATE/feature-spec.md`
+- Use `/speckit.issue` para publicar specs como Issues ou converter Issues em specs
+
 ---
 
 ## Pipeline
@@ -70,6 +76,8 @@ ai-first-pipeline/
 ├── CONTRIBUTING.md         ← como contribuir
 ├── CHANGELOG.md            ← histórico de versões
 ├── .claude/commands/       ← comandos /speckit.*
+├── .github/
+│   └── ISSUE_TEMPLATE/     ← template de Issue para features (SDD)
 ├── specs/                  ← specs de features
 │   ├── EXAMPLE-001/        ← exemplo: rate limiting (sliding window + Redis)
 │   └── EXAMPLE-002/        ← exemplo: autenticação OAuth2 com GitHub (PKCE)
