@@ -11,7 +11,7 @@ Zero dependências de runtime. Apenas Markdown versionado.
 **1. Clone ou use este template**
 
 ```
-gh repo create meu-projeto --template jonatas/ai-first-pipeline
+gh repo create meu-projeto --template jonatascatarina/ai-first-pipeline
 ```
 
 **2. Defina a constituição do projeto**
