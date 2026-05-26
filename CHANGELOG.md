@@ -10,6 +10,17 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.2.0] — 2026-05-26
+
+### Adicionado
+- Badges de status nos READMEs (EN e PT-BR): licença MIT, último commit e GitHub stars via shields.io. Spec em `specs/FEATURE-007/lite.md` (fluxo `/sdd.lite`).
+- `specs/FEATURE-002/drift-report.md`: primeiro drift report do projeto, gerado com `/sdd.drift`. Veredicto ALINHADO — 5/6 critérios confirmados, CA-4 pendente de validação.
+
+### Alterado
+- `specs/FEATURE-002/spec.md` atualizado para refletir drifts benignos: fallback de seção vazia documentado em EARS-1, `test-results.md` registrado como artefato opcional, CA-4 marcado como pendente de validação.
+
+---
+
 ## [4.1.0] — 2026-05-26
 
 ### Alterado
