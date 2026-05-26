@@ -8,6 +8,9 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [Não lançado]
 
+### Adicionado
+- Comando `/pr-checklist` (FEATURE-002): gera checklist de revisão categorizado (Segurança, Testes, Arquitetura, Documentação) a partir do título e descrição de um PR. Detecção de contexto por keywords, itens obrigatórios fixos, output copiável em bloco Markdown.
+
 ### Planejado
 - Comando `/speckit.review` para revisão de código guiada por spec
 - Exemplo EXAMPLE-002 cobrindo autenticação OAuth2
