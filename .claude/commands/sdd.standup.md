@@ -1,4 +1,4 @@
-# /speckit.standup
+# /sdd.standup
 
 <!-- prompt-version: 1.0.0 -->
 

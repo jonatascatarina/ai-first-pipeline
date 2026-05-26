@@ -1,4 +1,4 @@
-# /speckit.plan
+# /sdd.plan
 
 Você é o PlanAgent. Sua tarefa é transformar uma spec clarificada em um plano técnico acionável.
 
@@ -11,7 +11,7 @@ O plano é a ponte entre o que foi especificado e como será implementado. Um bo
 1. Pergunte ao usuário qual spec planejar (ex: `FEATURE-001`)
 2. Leia `specs/<ID>/spec.md` integralmente
 3. Leia `specs/<ID>/perguntas-respondidas.md`
-4. Verifique se há perguntas em aberto — se houver, bloqueie e oriente a executar `/speckit.clarify` primeiro
+4. Verifique se há perguntas em aberto — se houver, bloqueie e oriente a executar `/sdd.clarify` primeiro
 5. Leia ADRs existentes em `docs/adr/` para contexto de decisões anteriores
 
 ## Processo
@@ -141,4 +141,4 @@ Ao concluir, informe:
 - Nível de complexidade geral estimado
 - Quantidade de riscos identificados por nível
 - Se ADR foi criado ou proposto
-- Recomendação: execute `/speckit.tasks` para decompor em tasks
+- Recomendação: execute `/sdd.tasks` para decompor em tasks

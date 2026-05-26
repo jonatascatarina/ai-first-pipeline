@@ -42,7 +42,7 @@ Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work. Run it
 **6. (Optional) Integrate with GitHub Issues**
 
 - Open Issues using `.github/ISSUE_TEMPLATE/feature-spec.md`
-- Use `/speckit.issue` to publish specs as Issues or convert Issues into spec scaffolds
+- Use `/sdd.issue` to publish specs as Issues or convert Issues into spec scaffolds
 
 ---
 
@@ -83,10 +83,10 @@ Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work. Run it
 |------|----------------|--------|
 | 8. Analyze | `/sdd.analyze` | `specs/<ID>/analysis-report.md` |
 | 9. Security audit | `security-auditor` | Report with BLOCKERs |
-| 10. Review | `/speckit.review` | PR review comment (copy-paste ready) |
+| 10. Review | `/sdd.review` | PR review comment (copy-paste ready) |
 | 11. Quality gate | `quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Changelog | `/speckit.changelog` | Updated `CHANGELOG.md` |
-| 13. Standup | `/speckit.standup` | Team standup summary |
+| 12. Changelog | `/sdd.changelog` | Updated `CHANGELOG.md` |
+| 13. Standup | `/sdd.standup` | Team standup summary |
 
 See `docs/tdd-ops-guide.md` for the complete activation guide for layers 2 and 3.
 
@@ -104,12 +104,12 @@ See `docs/tdd-ops-guide.md` for the complete activation guide for layers 2 and 3
 | `/sdd.analyze` | Analyze spec or code conformance and produce a report |
 | `/sdd.lite` | Lightweight pipeline for small/trivial features (specify + plan + tasks in one run) |
 | `/sdd.drift` | Detect divergence between spec and implementation |
-| `/speckit.review` | Spec-guided code review with human reviewer |
-| `/speckit.changelog` | Generate changelog section from git log |
-| `/speckit.standup` | Generate daily standup summary |
-| `/speckit.issue` | Bidirectional GitHub Issues integration |
-| `/speckit.adr` | Interactively create an Architecture Decision Record |
-| `/speckit.epic` | Decompose a large initiative into features with dependency map |
+| `/sdd.review` | Spec-guided code review with human reviewer |
+| `/sdd.changelog` | Generate changelog section from git log |
+| `/sdd.standup` | Generate daily standup summary |
+| `/sdd.issue` | Bidirectional GitHub Issues integration |
+| `/sdd.adr` | Interactively create an Architecture Decision Record |
+| `/sdd.epic` | Decompose a large initiative into features with dependency map |
 | `/pr-checklist` | Generate PR review checklist from title and description |
 
 ---
@@ -126,7 +126,7 @@ ai-first-pipeline/
 ├── CONTRIBUTING.md         ← how to contribute
 ├── CHANGELOG.md            ← version history
 ├── .claude/
-│   ├── commands/           ← /sdd.* and /speckit.* commands
+│   ├── commands/           ← /sdd.* commands
 │   ├── agents/             ← TDD, refactor, security-auditor, onboarding agents
 │   └── hooks/              ← pre-tool-use: file protection rules
 ├── .github/

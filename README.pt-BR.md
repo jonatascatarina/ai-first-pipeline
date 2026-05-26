@@ -44,7 +44,7 @@ Cada task em `specs/<FEATURE>/tasks.md` é uma unidade de trabalho autônoma. Ex
 
 Para times que usam o issue tracker do GitHub:
 - Abra Issues usando o template em `.github/ISSUE_TEMPLATE/feature-spec.md`
-- Use `/speckit.issue` para publicar specs como Issues ou converter Issues em specs
+- Use `/sdd.issue` para publicar specs como Issues ou converter Issues em specs
 
 ---
 
@@ -85,10 +85,10 @@ Para times que usam o issue tracker do GitHub:
 |-------|-----------------|-------|
 | 8. Analisar | `/sdd.analyze` | `specs/<ID>/analysis-report.md` |
 | 9. Auditar segurança | `security-auditor` | Relatório com BLOCKERs |
-| 10. Revisar | `/speckit.review` | Comentário de PR copiável |
+| 10. Revisar | `/sdd.review` | Comentário de PR copiável |
 | 11. Quality gate | `quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Changelog | `/speckit.changelog` | `CHANGELOG.md` atualizado |
-| 13. Standup | `/speckit.standup` | Resumo para o time |
+| 12. Changelog | `/sdd.changelog` | `CHANGELOG.md` atualizado |
+| 13. Standup | `/sdd.standup` | Resumo para o time |
 
 Veja `docs/tdd-ops-guide.md` para o guia completo de ativação das camadas 2 e 3.
 
@@ -105,7 +105,7 @@ ai-first-pipeline/
 ├── CONTRIBUTING.md         ← como contribuir
 ├── CHANGELOG.md            ← histórico de versões
 ├── .claude/
-│   ├── commands/           ← comandos /sdd.* e /speckit.*
+│   ├── commands/           ← comandos /sdd.*
 │   ├── agents/             ← agentes: TDD, refactor, security-auditor, onboarding
 │   └── hooks/              ← pre-tool-use: regras de proteção de arquivos
 ├── .github/
@@ -132,7 +132,7 @@ O diretório `specs/` contém dois tipos de artefato:
 - `EXAMPLE-001/` — rate limiting por usuário (API REST, sliding window, Redis)
 - `EXAMPLE-002/` — autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE)
 
-**Specs do próprio pipeline (`FEATURE-*`)** — este projeto foi desenvolvido usando o próprio processo que documenta. As specs `FEATURE-002` a `FEATURE-006` registram como cada comando `/speckit.*` foi especificado, planejado e implementado. São o histórico real de desenvolvimento do template — e também servem como exemplos de como o pipeline funciona na prática.
+**Specs do próprio pipeline (`FEATURE-*`)** — este projeto foi desenvolvido usando o próprio processo que documenta. As specs `FEATURE-002` a `FEATURE-006` registram como cada comando `/sdd.*` foi especificado, planejado e implementado. São o histórico real de desenvolvimento do template — e também servem como exemplos de como o pipeline funciona na prática.
 
 ---
 

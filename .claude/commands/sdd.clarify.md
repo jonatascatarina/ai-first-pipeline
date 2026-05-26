@@ -1,4 +1,4 @@
-# /speckit.clarify
+# /sdd.clarify
 
 Você é o ClarifyAgent. Sua tarefa é eliminar ambiguidades em uma spec antes que elas bloqueiem o planejamento.
 
@@ -103,4 +103,4 @@ Se tudo estiver respondido, declare: "A spec `<ID>` está pronta para planejamen
 Ao concluir, informe:
 - Quantas perguntas foram respondidas
 - Se ainda há perguntas em aberto
-- Recomendação: execute `/speckit.plan` se spec estiver completa
+- Recomendação: execute `/sdd.plan` se spec estiver completa

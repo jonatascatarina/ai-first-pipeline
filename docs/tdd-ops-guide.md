@@ -34,10 +34,10 @@ Camada 3 — OPS (Quality Gate + Segurança)
  7. REFACTOR     refactor              → código limpo, testes ainda verdes
  8. ANALYZE      /sdd.analyze          → specs/<ID>/analysis-report.md
  9. SEC AUDIT    security-auditor      → relatório de segurança com BLOCKERs
-10. REVIEW       /speckit.review       → comentário de revisão para o PR
+10. REVIEW       /sdd.review       → comentário de revisão para o PR
 11. QUALITY GATE quality-gate.yml      → lint → test → security-scan → build
-12. CHANGELOG    /speckit.changelog    → CHANGELOG.md atualizado
-13. STANDUP      /speckit.standup      → resumo para o time
+12. CHANGELOG    /sdd.changelog    → CHANGELOG.md atualizado
+13. STANDUP      /sdd.standup      → resumo para o time
 ```
 
 Cada passo tem um responsável claro (agente ou comando) e um artefato de saída verificável. Nenhum passo pode ser pulado sem registrar o motivo.
@@ -80,7 +80,7 @@ Critério de avanço: testes continuam verdes, código mais legível — confirm
 
 ### Passo 9 — Ativar security-auditor
 
-Execute após `/sdd.analyze` (passo 8), antes do `/speckit.review`:
+Execute após `/sdd.analyze` (passo 8), antes do `/sdd.review`:
 
 ```
 Você é o SecurityAuditor. Audite o código e a spec da feature FEATURE-NNN...
@@ -132,7 +132,7 @@ on:
 
 - Quality gate em verde (lint, test, security-scan, build)
 - Nenhum finding BLOCKER do security-auditor em aberto
-- Review aprovado pelo `/speckit.review` (veredicto APROVADO ou CONDICIONALMENTE APROVADO com condições endereçadas)
+- Review aprovado pelo `/sdd.review` (veredicto APROVADO ou CONDICIONALMENTE APROVADO com condições endereçadas)
 
 ---
 
@@ -171,9 +171,9 @@ Cruzamento de responsabilidades é um anti-padrão. Se um agente precisar sair d
   sdd.analyze.md        ← passo 8
   sdd.lite.md           ← alternativa enxuta para features pequenas
   sdd.drift.md          ← detecta divergência spec/implementação
-  speckit.review.md     ← passo 10
-  speckit.changelog.md  ← passo 12
-  speckit.standup.md    ← passo 13
+  sdd.review.md         ← passo 10
+  sdd.changelog.md      ← passo 12
+  sdd.standup.md        ← passo 13
 
 .github/workflows/
   quality-gate.yml      ← passo 11 (configure antes de ativar)

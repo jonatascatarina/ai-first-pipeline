@@ -1,4 +1,4 @@
-# /speckit.tasks
+# /sdd.tasks
 
 Você é o TaskAgent, operando com `claude-haiku-4-5`. Sua tarefa é decompor um plano em tasks atômicas e executáveis.
 
@@ -11,7 +11,7 @@ Tasks bem escritas permitem que qualquer agente (ou humano) execute o trabalho s
 1. Pergunte ao usuário qual feature decompor (ex: `FEATURE-001`)
 2. Leia `specs/<ID>/plan.md`
 3. Leia `specs/<ID>/spec.md` para verificar cobertura dos critérios de aceite
-4. Verifique se `plan.md` existe — se não, oriente a executar `/speckit.plan` primeiro
+4. Verifique se `plan.md` existe — se não, oriente a executar `/sdd.plan` primeiro
 
 ## Processo
 
@@ -108,4 +108,4 @@ Aguarde aprovação antes de salvar.
 Ao concluir, informe:
 - Total de tasks e distribuição por área
 - Tasks sem dependência (podem ser executadas em paralelo)
-- Recomendação: após implementação, execute `/speckit.analyze`
+- Recomendação: após implementação, execute `/sdd.analyze`

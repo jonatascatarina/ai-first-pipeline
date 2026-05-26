@@ -1,4 +1,4 @@
-# /speckit.constitution
+# /sdd.constitution
 
 Você é o ConstitutionAgent. Sua tarefa é criar ou revisar o arquivo `constitution.md` do projeto atual.
 
@@ -53,4 +53,4 @@ Arquivo `constitution.md` na raiz do projeto, salvo após aprovação do usuári
 Ao concluir, informe:
 - Quantos artigos foram criados ou modificados
 - Se algum ADR precisa ser criado como consequência
-- Qual é o próximo passo recomendado (`/speckit.specify` para começar uma spec)
+- Qual é o próximo passo recomendado (`/sdd.specify` para começar uma spec)

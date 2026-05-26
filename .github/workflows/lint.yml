@@ -45,12 +45,12 @@ jobs:
             "AGENTS.md"
             "CONTRIBUTING.md"
             "CHANGELOG.md"
-            ".claude/commands/speckit.constitution.md"
-            ".claude/commands/speckit.specify.md"
-            ".claude/commands/speckit.clarify.md"
-            ".claude/commands/speckit.plan.md"
-            ".claude/commands/speckit.tasks.md"
-            ".claude/commands/speckit.analyze.md"
+            ".claude/commands/sdd.constitution.md"
+            ".claude/commands/sdd.specify.md"
+            ".claude/commands/sdd.clarify.md"
+            ".claude/commands/sdd.plan.md"
+            ".claude/commands/sdd.tasks.md"
+            ".claude/commands/sdd.analyze.md"
           )
 
           all_ok=true

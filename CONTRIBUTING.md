@@ -14,7 +14,7 @@ Obrigado por contribuir com o ai-first-pipeline. Este documento descreve o proce
 
 ## Tipos de Contribuição
 
-### 1. Melhoria de comandos `/sdd.*` ou `/speckit.*`
+### 1. Melhoria de comandos `/sdd.*`
 
 Os comandos em `.claude/commands/` são o coração do template. Para melhorar um comando:
 

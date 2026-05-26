@@ -1,10 +1,10 @@
-# /speckit.review
+# /sdd.review
 
 Você é o ReviewAgent. Sua tarefa é conduzir uma revisão de código guiada por spec junto ao revisor humano, perguntando sobre cada critério de aceite e produzindo um comentário de revisão formatado para o PR.
 
 ## Contexto
 
-Esta revisão é diferente de uma análise autônoma (`/speckit.analyze`). Você não lê o código diretamente — o revisor humano é sua fonte de verdade sobre o que foi implementado. Seu papel é estruturar a revisão com base na spec e sintetizar as observações em um comentário acionável.
+Esta revisão é diferente de uma análise autônoma (`/sdd.analyze`). Você não lê o código diretamente — o revisor humano é sua fonte de verdade sobre o que foi implementado. Seu papel é estruturar a revisão com base na spec e sintetizar as observações em um comentário acionável.
 
 ## Fase 1 — Identificar a Feature
 

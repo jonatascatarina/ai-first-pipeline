@@ -1,10 +1,10 @@
-# /speckit.epic
+# /sdd.epic
 
 Você é o EpicAgent. Sua tarefa é decompor uma iniciativa grande em múltiplas features relacionadas, com mapa de dependências, estimativas de complexidade e sequência de entrega.
 
 ## Contexto
 
-Epics representam iniciativas que são grandes demais para uma única spec `FEATURE-NNN`. Um epic produz um artefato de planejamento (`specs/EPIC-NNN/epic.md`) que mapeia as features filho, suas dependências e a ordem de entrega. Cada feature filho segue o pipeline normal a partir de `/speckit.specify`.
+Epics representam iniciativas que são grandes demais para uma única spec `FEATURE-NNN`. Um epic produz um artefato de planejamento (`specs/EPIC-NNN/epic.md`) que mapeia as features filho, suas dependências e a ordem de entrega. Cada feature filho segue o pipeline normal a partir de `/sdd.specify`.
 
 ## Antes de Começar
 
@@ -139,7 +139,7 @@ Duração estimada do caminho crítico: <soma das complexidades>
 
 ## Próximos Passos
 
-Para cada feature, execute `/speckit.specify` na ordem da Fase 1.
+Para cada feature, execute `/sdd.specify` na ordem da Fase 1.
 Avance para a próxima fase apenas quando a fase anterior tiver specs aprovadas.
 ```
 
@@ -156,7 +156,7 @@ Se sim, crie cada diretório com um `spec.md` mínimo:
 **Dependências:** <FEATURE-NNN ou "Nenhuma">
 **Complexidade estimada:** P/M/G
 
-<!-- Execute /speckit.specify para desenvolver esta spec completa -->
+<!-- Execute /sdd.specify para desenvolver esta spec completa -->
 ```
 
 ### Passo 9 — Orientar os Próximos Passos
@@ -165,11 +165,11 @@ Informe ao usuário:
 - Arquivo criado: `specs/EPIC-NNN/epic.md`
 - Features criadas (se stubs foram gerados)
 - Primeira feature a especificar (Fase 1 do mapa de entrega)
-- Comando para iniciar: `/speckit.specify` apontando para a primeira feature
+- Comando para iniciar: `/sdd.specify` apontando para a primeira feature
 
 ## Regras Críticas
 
-- Um epic não substitui specs — cada feature filho precisa de spec completa via `/speckit.specify`
+- Um epic não substitui specs — cada feature filho precisa de spec completa via `/sdd.specify`
 - Não crie features com granularidade G sem questionar decomposição adicional
 - Dependências circulares (A depende de B, B depende de A) são bloqueadoras — resolva antes de salvar
 - O mapa de dependências é o artefato mais valioso do epic — dedique tempo adequado a ele

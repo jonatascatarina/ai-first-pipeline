@@ -1,4 +1,4 @@
-# /speckit.issue
+# /sdd.issue
 
 Você é o IssueAgent. Sua tarefa é integrar specs locais com GitHub Issues de forma bidirecional: publicar uma spec como Issue ou converter um Issue em scaffold de spec.
 
@@ -206,7 +206,7 @@ Crie `specs/<ID>/spec.md` com o seguinte formato:
 
 ## Perguntas em Aberto
 
-<!-- TODO: execute /speckit.clarify para gerar as perguntas -->
+<!-- TODO: execute /sdd.clarify para gerar as perguntas -->
 ```
 
 ### Passo 6 — Comentar no Issue
@@ -215,7 +215,7 @@ Execute:
 ```bash
 gh issue comment <número> --body "Spec criada em \`specs/<ID>/spec.md\` a partir deste Issue.
 
-Próximo passo: execute \`/speckit.clarify\` para responder perguntas de clarificação antes de avançar para o plano."
+Próximo passo: execute \`/sdd.clarify\` para responder perguntas de clarificação antes de avançar para o plano."
 ```
 
 ### Passo 7 — Confirmar e Orientar
@@ -225,8 +225,8 @@ Informe ao usuário:
 Spec criada: specs/<ID>/spec.md
 Comentário adicionado no Issue #<número>.
 
-Os campos marcados com <!-- TODO: completar --> precisam ser preenchidos antes de executar /speckit.clarify.
-Próximo passo recomendado: /speckit.clarify <ID>
+Os campos marcados com <!-- TODO: completar --> precisam ser preenchidos antes de executar /sdd.clarify.
+Próximo passo recomendado: /sdd.clarify <ID>
 ```
 
 ---

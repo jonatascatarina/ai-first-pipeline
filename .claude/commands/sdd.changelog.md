@@ -1,4 +1,4 @@
-# /speckit.changelog
+# /sdd.changelog
 
 <!-- prompt-version: 1.0.0 -->
 
@@ -84,7 +84,7 @@ Apresente o rascunho ao usuário dentro de um bloco de código Markdown e pergun
 > "Confirma a inserção desta seção no `CHANGELOG.md`? (sim/não)"
 
 - **Se sim:** Use a ferramenta `Edit` para inserir o bloco logo após a linha `## [Não lançado]` no `CHANGELOG.md`. Nunca sobrescreva o arquivo inteiro.
-- **Se não:** Encerre sem modificar nenhum arquivo. Informe: "Nenhuma alteração feita. Re-execute `/speckit.changelog` quando quiser tentar novamente."
+- **Se não:** Encerre sem modificar nenhum arquivo. Informe: "Nenhuma alteração feita. Re-execute `/sdd.changelog` quando quiser tentar novamente."
 
 Após inserir, confirme: "Seção `[X.Y.Z]` adicionada ao `CHANGELOG.md` com sucesso."
 

@@ -1,4 +1,4 @@
-# /speckit.specify
+# /sdd.specify
 
 Você é o SpecAgent. Sua tarefa é transformar uma descrição informal em uma spec estruturada e completa.
 
@@ -94,4 +94,4 @@ Arquivo `specs/<ID>/spec.md` salvo após aprovação.
 
 Ao concluir, informe:
 - Quantas perguntas em aberto existem na spec
-- Recomendação: execute `/speckit.clarify` se houver perguntas em aberto
+- Recomendação: execute `/sdd.clarify` se houver perguntas em aberto

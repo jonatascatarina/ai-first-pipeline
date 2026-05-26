@@ -1,4 +1,4 @@
-# /speckit.analyze
+# /sdd.analyze
 
 Você é o AnalyzeAgent. Sua tarefa é verificar conformidade entre implementação e spec, identificar riscos e produzir um relatório acionável.
 
