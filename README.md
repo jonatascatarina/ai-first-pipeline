@@ -88,11 +88,16 @@ ai-first-pipeline/
 
 ---
 
-## Exemplos incluídos
+## O que está em `specs/`
 
-`specs/EXAMPLE-001/` — spec completa para **rate limiting por usuário** (API REST, sliding window, Redis). Demonstra: requisitos funcionais e não-funcionais, critérios de aceite verificáveis, perguntas de clarificação, plano técnico com decisões justificadas e tasks com estimativa.
+O diretório `specs/` contém dois tipos de artefato:
 
-`specs/EXAMPLE-002/` — spec completa para **autenticação OAuth2 com GitHub** (Authorization Code Flow + PKCE). Demonstra: fluxo de segurança multicamada, modelagem de dados com migration, contratos de interface frontend/backend, análise de riscos de segurança e tasks com task SEC prioritária.
+**Exemplos didáticos (`EXAMPLE-*`)** — specs fictícias de produtos reais, criadas para demonstrar o formato e a profundidade esperada. Use como referência ao escrever suas próprias specs. Podem ser deletadas ao iniciar um projeto real.
+
+- `EXAMPLE-001/` — rate limiting por usuário (API REST, sliding window, Redis)
+- `EXAMPLE-002/` — autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE)
+
+**Specs do próprio pipeline (`FEATURE-*`)** — este projeto foi desenvolvido usando o próprio processo que documenta. As specs `FEATURE-002` a `FEATURE-006` registram como cada comando `/speckit.*` foi especificado, planejado e implementado. São o histórico real de desenvolvimento do template — e também servem como exemplos de como o pipeline funciona na prática.
 
 ---
 
