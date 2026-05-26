@@ -1,6 +1,6 @@
 # ai-first-pipeline
 
-[![Release](https://img.shields.io/badge/release-v3.0.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v3.0.0) [🇺🇸 Read in English](./README.md)
+[![Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.0.0) [🇺🇸 Read in English](./README.md)
 
 Template de pipeline AI-first para desenvolvimento de software com SDD (Spec-Driven Development), TDD e DevSecOps integrados. Publique no GitHub e use como ponto de partida para qualquer projeto.
 
