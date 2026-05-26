@@ -10,6 +10,20 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [2.1.0] — 2026-05-26
+
+### Adicionado
+- Camada TDD com quatro agentes especializados em `.claude/agents/`: `tdd-test-writer` (traduz critérios de aceite em testes), `tdd-implementer` (código mínimo para testes passarem), `refactor` (limpa código com testes verdes), `security-auditor` (OWASP Top 10, LGPD, CVEs)
+- Camada OPS com `quality-gate.yml` em `.github/workflows/`: pipeline documentado de lint → test → security-scan → build com placeholders configuráveis
+- Hook `pre-tool-use.md` em `.claude/hooks/`: padrão PERMITIR/ALERTAR/BLOQUEAR para proteger arquivos críticos (`constitution.md`, ADRs, workflows, secrets)
+- Guia `docs/tdd-ops-guide.md`: fluxo completo dos 13 passos do pipeline, sequência de ativação de agentes, regras de avanço entre camadas e tabela de isolamento de responsabilidades
+
+### Alterado
+- `CLAUDE.md`: tabela de model routing atualizada com fases TDD/OPS; nova seção de agentes especializados com arquivo e fase de cada um
+- `README.md`: pipeline reorganizado em 3 camadas (SDD → TDD → OPS) com 13 passos; estrutura de diretórios expandida
+
+---
+
 ## [2.0.0] — 2026-05-26
 
 ### Adicionado
