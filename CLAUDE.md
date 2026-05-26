@@ -81,3 +81,4 @@ Este arquivo configura o comportamento dos agentes Claude neste repositório. Le
 | `/speckit.plan` | Cria plano de implementação a partir da spec |
 | `/speckit.tasks` | Decompõe o plano em tasks executáveis |
 | `/speckit.analyze` | Analisa código ou spec e gera relatório |
+| `/pr-checklist` | Gera checklist de revisão de PR a partir de título e descrição |
