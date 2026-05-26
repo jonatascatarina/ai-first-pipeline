@@ -18,7 +18,7 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 **Modelo:** `claude-sonnet-4-6`
 **Fase:** T2 — Especificação
-**Comando:** `/speckit.specify`
+**Comando:** `/sdd.specify`
 
 ### Responsabilidades
 - Produzir `specs/<ID>/spec.md` completo a partir de uma descrição informal
@@ -43,7 +43,7 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 **Modelo:** `claude-sonnet-4-6`
 **Fase:** T3 — Clarificação
-**Comando:** `/speckit.clarify`
+**Comando:** `/sdd.clarify`
 
 ### Responsabilidades
 - Ler a spec e identificar questões que bloqueiam o planejamento
@@ -68,7 +68,7 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 **Modelo:** `claude-sonnet-4-6`
 **Fase:** T4 — Planejamento
-**Comando:** `/speckit.plan`
+**Comando:** `/sdd.plan`
 
 ### Responsabilidades
 - Produzir `specs/<ID>/plan.md` com abordagem técnica detalhada
@@ -95,7 +95,7 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 **Modelo:** `claude-haiku-4-5`
 **Fase:** T6 — Decomposição de Tasks
-**Comando:** `/speckit.tasks`
+**Comando:** `/sdd.tasks`
 
 ### Responsabilidades
 - Decompor o plano em tasks atômicas e executáveis
@@ -121,7 +121,7 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 **Modelo:** `claude-sonnet-4-6`
 **Fase:** T7/T8 — Análise
-**Comando:** `/speckit.analyze`
+**Comando:** `/sdd.analyze`
 
 ### Responsabilidades
 - Verificar conformidade da implementação com a spec

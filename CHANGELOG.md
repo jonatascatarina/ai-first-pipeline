@@ -10,6 +10,23 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.0.0] — 2026-05-26
+
+### Breaking Changes
+- Renomeados 6 comandos do prefixo `speckit.` para `sdd.`: `sdd.constitution`, `sdd.specify`, `sdd.clarify`, `sdd.plan`, `sdd.tasks`, `sdd.analyze`. Comandos de output e utilitários (`speckit.review`, `speckit.changelog`, `speckit.standup`, `speckit.issue`, `speckit.adr`, `speckit.epic`) mantêm o prefixo `speckit.`.
+
+### Adicionado
+- `README.md` em inglês com tagline de posicionamento, tabela comparativa e link para versão em português
+- `README.pt-BR.md` com conteúdo completo em português e link para versão em inglês
+- Comando `/sdd.lite`: pipeline enxuto para features pequenas (specify + plan + tasks em uma execução). Output único: `specs/<ID>/lite.md` com outcomes, até 3 tasks e risco geral. Sem clarify, sem analyze.
+- Comando `/sdd.drift`: detecta divergência entre spec e implementação cruzando critérios de aceite com commits git. Classifica por status (✅ Implementado / ⏳ Não implementado / ⚠️ Fora da spec). Gera `specs/<ID>/drift-report.md`.
+- Tabela comparativa em ambos os READMEs: ai-first-pipeline vs Spec Kit vs Kiro
+
+### Alterado
+- `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md`, `docs/tdd-ops-guide.md`: todas as referências a comandos renomeados atualizadas
+
+---
+
 ## [3.0.0] — 2026-05-26
 
 ### Adicionado

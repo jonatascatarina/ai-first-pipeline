@@ -89,12 +89,14 @@ Cada agente tem escopo estrito definido em seu arquivo. Cruzamento de responsabi
 
 | Comando | Descrição |
 |---------|-----------|
-| `/speckit.constitution` | Define ou atualiza a constituição do projeto |
-| `/speckit.specify` | Cria spec detalhada de uma feature |
-| `/speckit.clarify` | Gera perguntas de clarificação para uma spec |
-| `/speckit.plan` | Cria plano de implementação a partir da spec |
-| `/speckit.tasks` | Decompõe o plano em tasks executáveis |
-| `/speckit.analyze` | Analisa código ou spec e gera relatório |
+| `/sdd.constitution` | Define ou atualiza a constituição do projeto |
+| `/sdd.specify` | Cria spec detalhada de uma feature |
+| `/sdd.clarify` | Gera perguntas de clarificação para uma spec |
+| `/sdd.plan` | Cria plano de implementação a partir da spec |
+| `/sdd.tasks` | Decompõe o plano em tasks executáveis |
+| `/sdd.analyze` | Analisa código ou spec e gera relatório |
+| `/sdd.lite` | Pipeline enxuto para features pequenas (specify + plan + tasks em uma execução) |
+| `/sdd.drift` | Detecta divergência entre spec aprovada e implementação via commits |
 | `/speckit.review` | Conduz revisão de código guiada por spec junto ao revisor humano |
 | `/speckit.issue` | Publica spec como GitHub Issue ou converte Issue em scaffold de spec (bidirecional) |
 | `/speckit.adr` | Guia a criação interativa de um Architecture Decision Record |

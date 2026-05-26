@@ -1,50 +1,48 @@
 # ai-first-pipeline
 
-[![Release](https://img.shields.io/badge/release-v3.0.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v3.0.0)
+[![Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.0.0) [🇧🇷 Leia em português](./README.pt-BR.md)
 
-Template de pipeline AI-first para desenvolvimento de software com SDD (Spec-Driven Development), TDD e DevSecOps integrados. Publique no GitHub e use como ponto de partida para qualquer projeto.
-
-Zero dependências de runtime. Apenas Markdown versionado.
+Lightweight SDD pipeline for AI coding agents.
+Zero runtime dependencies, agent-agnostic, Markdown-only.
 
 ---
 
 ## Quickstart
 
-**1. Clone ou use este template**
+**1. Clone or use this template**
 
 ```
-gh repo create meu-projeto --template jonatascatarina/ai-first-pipeline
+gh repo create my-project --template jonatascatarina/ai-first-pipeline
 ```
 
-**2. Defina a constituição do projeto**
+**2. Define your project constitution**
 
 ```
-/speckit.constitution
+/sdd.constitution
 ```
 
-**3. Escreva a spec da primeira feature**
+**3. Write your first feature spec**
 
 ```
-/speckit.specify
+/sdd.specify
 ```
 
-**4. Responda as perguntas de clarificação e gere o plano**
+**4. Clarify, plan and break into tasks**
 
 ```
-/speckit.clarify
-/speckit.plan
-/speckit.tasks
+/sdd.clarify
+/sdd.plan
+/sdd.tasks
 ```
 
-**5. Implemente guiado pelas tasks**
+**5. Implement guided by tasks**
 
-Cada task em `specs/<FEATURE>/tasks.md` é uma unidade de trabalho autônoma. Execute com seu agente preferido.
+Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work. Run it with your preferred agent.
 
-**6. (Opcional) Integre com GitHub Issues**
+**6. (Optional) Integrate with GitHub Issues**
 
-Para times que usam o issue tracker do GitHub:
-- Abra Issues usando o template em `.github/ISSUE_TEMPLATE/feature-spec.md`
-- Use `/speckit.issue` para publicar specs como Issues ou converter Issues em specs
+- Open Issues using `.github/ISSUE_TEMPLATE/feature-spec.md`
+- Use `/speckit.issue` to publish specs as Issues or convert Issues into spec scaffolds
 
 ---
 
@@ -62,85 +60,118 @@ Para times que usam o issue tracker do GitHub:
                                       13. STANDUP
 ```
 
-### Camada 1 — SDD
+### Layer 1 — SDD
 
-| Passo | Comando | Agente | Saída |
-|-------|---------|--------|-------|
-| 1. Especificar | `/speckit.specify` | Sonnet | `specs/<ID>/spec.md` |
-| 2. Clarificar | `/speckit.clarify` | Sonnet | `specs/<ID>/perguntas-respondidas.md` |
-| 3. Planejar | `/speckit.plan` | Sonnet | `specs/<ID>/plan.md` |
-| 4. Detalhar tasks | `/speckit.tasks` | Haiku | `specs/<ID>/tasks.md` |
+| Step | Command | Model | Output |
+|------|---------|-------|--------|
+| 1. Specify | `/sdd.specify` | Sonnet | `specs/<ID>/spec.md` |
+| 2. Clarify | `/sdd.clarify` | Sonnet | `specs/<ID>/perguntas-respondidas.md` |
+| 3. Plan | `/sdd.plan` | Sonnet | `specs/<ID>/plan.md` |
+| 4. Tasks | `/sdd.tasks` | Haiku | `specs/<ID>/tasks.md` |
 
-### Camada 2 — TDD
+### Layer 2 — TDD
 
-| Passo | Agente | Saída |
-|-------|--------|-------|
-| 5. Escrever testes | `tdd-test-writer` | Suíte de testes baseada na spec |
-| 6. Implementar | `tdd-implementer` | Código mínimo para testes passarem |
-| 7. Refatorar | `refactor` | Código limpo, testes ainda verdes |
+| Step | Agent | Output |
+|------|-------|--------|
+| 5. Write tests | `tdd-test-writer` | Test suite based on acceptance criteria |
+| 6. Implement | `tdd-implementer` | Minimal code to make tests pass |
+| 7. Refactor | `refactor` | Clean code, tests still green |
 
-### Camada 3 — OPS
+### Layer 3 — OPS
 
-| Passo | Comando / Agente | Saída |
-|-------|-----------------|-------|
-| 8. Analisar | `/speckit.analyze` | `specs/<ID>/analysis-report.md` |
-| 9. Auditar segurança | `security-auditor` | Relatório com BLOCKERs |
-| 10. Revisar | `/speckit.review` | Comentário de PR copiável |
+| Step | Command / Agent | Output |
+|------|----------------|--------|
+| 8. Analyze | `/sdd.analyze` | `specs/<ID>/analysis-report.md` |
+| 9. Security audit | `security-auditor` | Report with BLOCKERs |
+| 10. Review | `/speckit.review` | PR review comment (copy-paste ready) |
 | 11. Quality gate | `quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Changelog | `/speckit.changelog` | `CHANGELOG.md` atualizado |
-| 13. Standup | `/speckit.standup` | Resumo para o time |
+| 12. Changelog | `/speckit.changelog` | Updated `CHANGELOG.md` |
+| 13. Standup | `/speckit.standup` | Team standup summary |
 
-Veja `docs/tdd-ops-guide.md` para o guia completo de ativação das camadas 2 e 3.
+See `docs/tdd-ops-guide.md` for the complete activation guide for layers 2 and 3.
 
 ---
 
-## Estrutura
+## All Commands
+
+| Command | Description |
+|---------|-------------|
+| `/sdd.constitution` | Define or update the project constitution |
+| `/sdd.specify` | Write a detailed feature spec |
+| `/sdd.clarify` | Generate clarification questions for a spec |
+| `/sdd.plan` | Create an implementation plan from the spec |
+| `/sdd.tasks` | Break the plan into executable tasks |
+| `/sdd.analyze` | Analyze spec or code conformance and produce a report |
+| `/sdd.lite` | Lightweight pipeline for small/trivial features (specify + plan + tasks in one run) |
+| `/sdd.drift` | Detect divergence between spec and implementation |
+| `/speckit.review` | Spec-guided code review with human reviewer |
+| `/speckit.changelog` | Generate changelog section from git log |
+| `/speckit.standup` | Generate daily standup summary |
+| `/speckit.issue` | Bidirectional GitHub Issues integration |
+| `/speckit.adr` | Interactively create an Architecture Decision Record |
+| `/speckit.epic` | Decompose a large initiative into features with dependency map |
+| `/pr-checklist` | Generate PR review checklist from title and description |
+
+---
+
+## Structure
 
 ```
 ai-first-pipeline/
-├── README.md               ← você está aqui
-├── constitution.md         ← princípios e regras do projeto
-├── CLAUDE.md               ← instruções e model routing
-├── AGENTS.md               ← definição dos agentes
-├── CONTRIBUTING.md         ← como contribuir
-├── CHANGELOG.md            ← histórico de versões
+├── README.md               ← you are here (English)
+├── README.pt-BR.md         ← Portuguese version
+├── constitution.md         ← project principles and governance rules
+├── CLAUDE.md               ← agent instructions and model routing
+├── AGENTS.md               ← agent definitions
+├── CONTRIBUTING.md         ← how to contribute
+├── CHANGELOG.md            ← version history
 ├── .claude/
-│   ├── commands/           ← comandos /speckit.*
-│   ├── agents/             ← agentes: TDD, refactor, security-auditor, onboarding
-│   └── hooks/              ← pre-tool-use: regras de proteção de arquivos
+│   ├── commands/           ← /sdd.* and /speckit.* commands
+│   ├── agents/             ← TDD, refactor, security-auditor, onboarding agents
+│   └── hooks/              ← pre-tool-use: file protection rules
 ├── .github/
-│   ├── ISSUE_TEMPLATE/     ← template de Issue para features (SDD)
+│   ├── ISSUE_TEMPLATE/     ← structured Issue template for features
 │   └── workflows/
-│       └── quality-gate.yml ← pipeline CI: lint → test → sec-scan → build (configure antes de ativar)
+│       └── quality-gate.yml ← CI pipeline template (configure before activating)
 ├── docs/
 │   ├── adr/                ← Architecture Decision Records
-│   └── tdd-ops-guide.md    ← guia das camadas TDD e OPS
-├── specs/                  ← specs de features e epics
-│   ├── EXAMPLE-001/        ← exemplo: rate limiting (sliding window + Redis)
-│   └── EXAMPLE-002/        ← exemplo: autenticação OAuth2 com GitHub (PKCE)
-└── docs/adr/               ← Architecture Decision Records
+│   └── tdd-ops-guide.md    ← TDD and OPS layers guide
+└── specs/                  ← feature specs and epics
+    ├── EXAMPLE-001/        ← example: rate limiting (sliding window + Redis)
+    └── EXAMPLE-002/        ← example: OAuth2 with GitHub (PKCE)
 ```
 
 ---
 
-## O que está em `specs/`
+## What's in `specs/`
 
-O diretório `specs/` contém dois tipos de artefato:
+**Didactic examples (`EXAMPLE-*`)** — complete specs for real-world scenarios, built to demonstrate the expected format and depth. Use as reference when writing your own specs. Safe to delete when starting a real project.
 
-**Exemplos didáticos (`EXAMPLE-*`)** — specs fictícias de produtos reais, criadas para demonstrar o formato e a profundidade esperada. Use como referência ao escrever suas próprias specs. Podem ser deletadas ao iniciar um projeto real.
+- `EXAMPLE-001/` — per-user rate limiting (REST API, sliding window, Redis)
+- `EXAMPLE-002/` — OAuth2 authentication with GitHub (Authorization Code Flow + PKCE)
 
-- `EXAMPLE-001/` — rate limiting por usuário (API REST, sliding window, Redis)
-- `EXAMPLE-002/` — autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE)
-
-**Specs do próprio pipeline (`FEATURE-*`)** — este projeto foi desenvolvido usando o próprio processo que documenta. As specs `FEATURE-002` a `FEATURE-006` registram como cada comando `/speckit.*` foi especificado, planejado e implementado. São o histórico real de desenvolvimento do template — e também servem como exemplos de como o pipeline funciona na prática.
+**Pipeline's own specs (`FEATURE-*`)** — this project was built using the process it documents. Specs `FEATURE-002` to `FEATURE-006` record how each command was specified, planned and implemented. Real development history — and additional examples of the pipeline in action.
 
 ---
 
-## Princípios
+## Comparison
 
-- **Spec before code** — nenhuma linha de código sem spec aprovada
-- **Questions before assumptions** — clarificar é mais barato que refatorar
-- **Docs as source of truth** — o Markdown versiona as decisões, o código implementa
-- **AI-native** — cada fase é projetada para ser executada por um agente
+| Feature | ai-first-pipeline | Spec Kit | Kiro |
+|---------|-------------------|----------|------|
+| Zero dependencies | ✅ Markdown only | ❌ Python CLI | ❌ Full IDE |
+| Agent-agnostic | ✅ | ✅ | ❌ Locked |
+| Drift detection | ✅ `/sdd.drift` | ❌ | ❌ |
+| Lite mode | ✅ `/sdd.lite` | ❌ | ❌ |
+| Event hooks | ❌ | ❌ | ✅ |
+| Bilingual docs | ✅ EN + PT-BR | ❌ EN only | ❌ EN only |
 
-Veja `constitution.md` para o contrato completo do projeto.
+---
+
+## Principles
+
+- **Spec before code** — no production code without an approved spec
+- **Questions before assumptions** — clarifying is cheaper than refactoring
+- **Docs as source of truth** — Markdown versions decisions, code implements them
+- **AI-native** — every phase is designed to be executed by an agent
+
+See `constitution.md` for the full project contract.

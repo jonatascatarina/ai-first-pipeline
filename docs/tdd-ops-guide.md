@@ -25,14 +25,14 @@ Camada 3 — OPS (Quality Gate + Segurança)
 ## Os 13 Passos do Pipeline Completo
 
 ```
- 1. SPEC         /speckit.specify      → specs/<ID>/spec.md
- 2. CLARIFY      /speckit.clarify      → specs/<ID>/perguntas-respondidas.md
- 3. PLAN         /speckit.plan         → specs/<ID>/plan.md
- 4. TASKS        /speckit.tasks        → specs/<ID>/tasks.md
+ 1. SPEC         /sdd.specify          → specs/<ID>/spec.md
+ 2. CLARIFY      /sdd.clarify          → specs/<ID>/perguntas-respondidas.md
+ 3. PLAN         /sdd.plan             → specs/<ID>/plan.md
+ 4. TASKS        /sdd.tasks            → specs/<ID>/tasks.md
  5. WRITE TESTS  tdd-test-writer       → testes baseados nos critérios de aceite
  6. IMPLEMENT    tdd-implementer       → código mínimo para testes passarem
  7. REFACTOR     refactor              → código limpo, testes ainda verdes
- 8. ANALYZE      /speckit.analyze      → specs/<ID>/analysis-report.md
+ 8. ANALYZE      /sdd.analyze          → specs/<ID>/analysis-report.md
  9. SEC AUDIT    security-auditor      → relatório de segurança com BLOCKERs
 10. REVIEW       /speckit.review       → comentário de revisão para o PR
 11. QUALITY GATE quality-gate.yml      → lint → test → security-scan → build
@@ -80,7 +80,7 @@ Critério de avanço: testes continuam verdes, código mais legível — confirm
 
 ### Passo 9 — Ativar security-auditor
 
-Execute após `/speckit.analyze` (passo 8), antes do `/speckit.review`:
+Execute após `/sdd.analyze` (passo 8), antes do `/speckit.review`:
 
 ```
 Você é o SecurityAuditor. Audite o código e a spec da feature FEATURE-NNN...
@@ -164,11 +164,13 @@ Cruzamento de responsabilidades é um anti-padrão. Se um agente precisar sair d
   pre-tool-use.md       ← protege arquivos e detecta padrões proibidos
 
 .claude/commands/
-  speckit.specify.md    ← passo 1
-  speckit.clarify.md    ← passo 2
-  speckit.plan.md       ← passo 3
-  speckit.tasks.md      ← passo 4
-  speckit.analyze.md    ← passo 8
+  sdd.specify.md        ← passo 1
+  sdd.clarify.md        ← passo 2
+  sdd.plan.md           ← passo 3
+  sdd.tasks.md          ← passo 4
+  sdd.analyze.md        ← passo 8
+  sdd.lite.md           ← alternativa enxuta para features pequenas
+  sdd.drift.md          ← detecta divergência spec/implementação
   speckit.review.md     ← passo 10
   speckit.changelog.md  ← passo 12
   speckit.standup.md    ← passo 13
