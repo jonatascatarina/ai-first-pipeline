@@ -8,13 +8,32 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [Não lançado]
 
+---
+
+## [2.0.0] — 2026-05-26
+
 ### Adicionado
-- Comando `/pr-checklist` (FEATURE-002): gera checklist de revisão categorizado (Segurança, Testes, Arquitetura, Documentação) a partir do título e descrição de um PR. Detecção de contexto por keywords, itens obrigatórios fixos, output copiável em bloco Markdown.
-- Comando `/speckit.changelog` (FEATURE-003): gera seção de changelog automaticamente a partir do git log cruzado com specs referenciadas nos commits. Classifica por prefixo convencional, agrupa múltiplos commits por spec e exige confirmação antes de escrever no CHANGELOG.md.
-- Comando `/speckit.standup` (FEATURE-004): gera mensagem de standup diário pronta para colar no Slack/Discord, traduzindo commits técnicos para linguagem de negócio. Trata segunda-feira automaticamente com `--since="last friday"`.
 - Comando `/speckit.review` (FEATURE-005): conduz revisão de código guiada por spec junto ao revisor humano. Apresenta cada critério de aceite com perguntas específicas, coleta avaliações (OK/PARCIAL/AUSENTE) e gera comentário de revisão formatado para colar no PR com veredicto (APROVADO/BLOQUEADO/CONDICIONALMENTE APROVADO).
-- Exemplo `EXAMPLE-002`: spec completa de autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE). Cobre fluxo frontend/backend, migration de banco, análise de riscos de segurança (client_secret, CSRF, open redirect, replay de code) e 10 tasks incluindo task SEC prioritária.
 - Integração bidirecional com GitHub Issues (FEATURE-006): template de Issue estruturado em `.github/ISSUE_TEMPLATE/feature-spec.md` e comando `/speckit.issue` que publica specs como Issues ou converte Issues em scaffolds de spec.
+- Exemplo `EXAMPLE-002`: spec completa de autenticação OAuth2 com GitHub (Authorization Code Flow + PKCE). Cobre fluxo frontend/backend, migration de banco, análise de riscos de segurança (client_secret, CSRF, open redirect, replay de code) e 10 tasks incluindo task SEC prioritária.
+
+### Pipeline completo em v2.0.0
+
+11 comandos disponíveis:
+
+| Comando | Descrição |
+|---------|-----------|
+| `/speckit.constitution` | Define ou atualiza a constituição do projeto |
+| `/speckit.specify` | Cria spec detalhada de uma feature |
+| `/speckit.clarify` | Gera perguntas de clarificação para uma spec |
+| `/speckit.plan` | Cria plano de implementação a partir da spec |
+| `/speckit.tasks` | Decompõe o plano em tasks executáveis |
+| `/speckit.analyze` | Analisa código ou spec e gera relatório |
+| `/speckit.changelog` | Gera seção de changelog a partir do git log |
+| `/speckit.standup` | Gera resumo de standup diário |
+| `/speckit.review` | Revisão de código guiada por spec |
+| `/speckit.issue` | Integração bidirecional com GitHub Issues |
+| `/pr-checklist` | Gera checklist de revisão de PR |
 
 ---
 
