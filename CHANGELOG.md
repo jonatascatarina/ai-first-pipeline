@@ -8,6 +8,11 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [Não lançado]
 
+### Adicionado
+- Comando `/speckit.adr`: guia a criação interativa de ADRs com contexto, decisão, alternativas consideradas e consequências. Status inicial `Em revisão`, imutável após aprovação (Artigo VII.3).
+- Comando `/speckit.epic`: decompõe iniciativas grandes em features com mapa de dependências, estimativas de complexidade (P/M/G), sequência de entrega por fases e caminho crítico. Gera `specs/EPIC-NNN/epic.md` e stubs opcionais de features filho.
+- Agente `onboarding`: gera resumo de contexto completo do projeto para um agente novo — versão atual, features com status inferido, ADRs, bloqueadores e próximos passos recomendados. Zero modificação de arquivos.
+
 ---
 
 ## [2.1.0] — 2026-05-26

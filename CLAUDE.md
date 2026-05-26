@@ -23,6 +23,7 @@ Este arquivo configura o comportamento dos agentes Claude neste repositório. Le
 | TDDImplementer | `.claude/agents/tdd-implementer.md` | Passo 6 — implementar código para testes passarem |
 | RefactorAgent | `.claude/agents/refactor.md` | Passo 7 — limpar código com testes verdes |
 | SecurityAuditor | `.claude/agents/security-auditor.md` | Passo 9 — auditar segurança antes do merge |
+| OnboardingAgent | `.claude/agents/onboarding.md` | Sob demanda — resumo de contexto para agente novo |
 
 Cada agente tem escopo estrito definido em seu arquivo. Cruzamento de responsabilidades é anti-padrão.
 
@@ -96,6 +97,8 @@ Cada agente tem escopo estrito definido em seu arquivo. Cruzamento de responsabi
 | `/speckit.analyze` | Analisa código ou spec e gera relatório |
 | `/speckit.review` | Conduz revisão de código guiada por spec junto ao revisor humano |
 | `/speckit.issue` | Publica spec como GitHub Issue ou converte Issue em scaffold de spec (bidirecional) |
+| `/speckit.adr` | Guia a criação interativa de um Architecture Decision Record |
+| `/speckit.epic` | Decompõe uma iniciativa grande em features com mapa de dependências e sequência de entrega |
 | `/speckit.changelog` | Gera seção de changelog a partir do git log e specs referenciadas |
 | `/speckit.standup` | Gera resumo de standup diário a partir dos commits git do dia anterior |
 | `/pr-checklist` | Gera checklist de revisão de PR a partir de título e descrição |

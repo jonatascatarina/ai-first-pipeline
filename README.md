@@ -106,7 +106,7 @@ ai-first-pipeline/
 ├── CHANGELOG.md            ← histórico de versões
 ├── .claude/
 │   ├── commands/           ← comandos /speckit.*
-│   ├── agents/             ← agentes TDD: test-writer, implementer, refactor, security-auditor
+│   ├── agents/             ← agentes: TDD, refactor, security-auditor, onboarding
 │   └── hooks/              ← pre-tool-use: regras de proteção de arquivos
 ├── .github/
 │   ├── ISSUE_TEMPLATE/     ← template de Issue para features (SDD)
@@ -115,7 +115,7 @@ ai-first-pipeline/
 ├── docs/
 │   ├── adr/                ← Architecture Decision Records
 │   └── tdd-ops-guide.md    ← guia das camadas TDD e OPS
-├── specs/                  ← specs de features
+├── specs/                  ← specs de features e epics
 │   ├── EXAMPLE-001/        ← exemplo: rate limiting (sliding window + Redis)
 │   └── EXAMPLE-002/        ← exemplo: autenticação OAuth2 com GitHub (PKCE)
 └── docs/adr/               ← Architecture Decision Records
