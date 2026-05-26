@@ -71,15 +71,18 @@ ai-first-pipeline/
 ├── CHANGELOG.md            ← histórico de versões
 ├── .claude/commands/       ← comandos /speckit.*
 ├── specs/                  ← specs de features
-│   └── EXAMPLE-001/        ← exemplo: rate limiting
+│   ├── EXAMPLE-001/        ← exemplo: rate limiting (sliding window + Redis)
+│   └── EXAMPLE-002/        ← exemplo: autenticação OAuth2 com GitHub (PKCE)
 └── docs/adr/               ← Architecture Decision Records
 ```
 
 ---
 
-## Exemplo incluído
+## Exemplos incluídos
 
-`specs/EXAMPLE-001/` contém um exemplo completo de spec para **rate limiting por usuário** (API REST, sliding window, Redis). Use como referência de formato e profundidade esperada.
+`specs/EXAMPLE-001/` — spec completa para **rate limiting por usuário** (API REST, sliding window, Redis). Demonstra: requisitos funcionais e não-funcionais, critérios de aceite verificáveis, perguntas de clarificação, plano técnico com decisões justificadas e tasks com estimativa.
+
+`specs/EXAMPLE-002/` — spec completa para **autenticação OAuth2 com GitHub** (Authorization Code Flow + PKCE). Demonstra: fluxo de segurança multicamada, modelagem de dados com migration, contratos de interface frontend/backend, análise de riscos de segurança e tasks com task SEC prioritária.
 
 ---
 
