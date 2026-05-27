@@ -10,6 +10,15 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.3.0] — 2026-05-26
+
+### Adicionado
+- `specs/TDD-OPS-LAYER/drift-report.md`: drift report da camada TDD + OPS. Veredicto ALINHADO — todos os 7 arquivos exigidos conformes com a spec original. `onboarding.md` identificado como único drift, benéfico e sem conflito.
+- `specs/FEATURE-008/spec.md` e `specs/FEATURE-008/lite.md`: formalização retroativa do OnboardingAgent como cidadão de primeira classe do pipeline. Resolve drift documentado no relatório da camada TDD + OPS.
+- Seção `OnboardingAgent` adicionada em `AGENTS.md` com modelo, fase, responsabilidades, input, output e restrições no padrão dos demais agentes.
+
+---
+
 ## [4.2.0] — 2026-05-26
 
 ### Adicionado
