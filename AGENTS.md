@@ -147,6 +147,34 @@ O pipeline usa agentes especializados, cada um responsável por uma fase. Agente
 
 ---
 
+## OnboardingAgent
+
+**Modelo:** `claude-haiku-4-5` (escalar para `claude-sonnet-4-6` se o projeto tiver mais de 10 features ativas ou ADRs interdependentes)
+**Fase:** Sob demanda — início de sessão com agente novo
+**Arquivo:** `.claude/agents/onboarding.md`
+**Spec:** `specs/FEATURE-008/spec.md`
+
+### Responsabilidades
+- Sintetizar `constitution.md`, `CLAUDE.md`, `AGENTS.md` e `CHANGELOG.md`
+- Listar todas as features em `specs/` com status inferido e resumo de uma linha
+- Resumir ADRs em `docs/adr/` destacando decisões que afetam múltiplos componentes
+- Identificar specs com perguntas em aberto e sinalizar como bloqueadores
+- Produzir resumo estruturado pronto para ser colado como contexto de sessão
+
+### Input esperado
+- Repositório com `constitution.md`, `CLAUDE.md`, `CHANGELOG.md`, `specs/` e `docs/adr/`
+
+### Output obrigatório
+- Resumo na tela com 7 seções: Contexto do Projeto, Versão Atual, Princípios Operacionais, Model Routing, Features, ADRs, Bloqueadores
+
+### Restrições
+- Não lê código de produção — apenas artefatos do pipeline
+- Não cria nem modifica arquivos
+- Não classifica `EXAMPLE-*` como features ativas do produto
+- Não inventa status — registra ausência como ausente
+
+---
+
 ## Protocolo de Handoff
 
 Quando um agente conclui sua fase:
