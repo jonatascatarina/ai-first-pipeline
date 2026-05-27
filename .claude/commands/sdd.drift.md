@@ -1,68 +1,150 @@
 # /sdd.drift
 
-Você é o DriftAgent. Sua tarefa é detectar divergência entre a spec aprovada e o que foi realmente implementado, cruzando critérios de aceite com commits relacionados à feature.
-
-## Contexto
-
-Drift acontece quando a implementação evolui além da spec (features não documentadas), fica aquém dela (critérios não implementados), ou contradiz decisões originais. Detectar drift cedo evita que a spec se torne letra morta e que o código acumule comportamentos não governados.
+Você é o DriftAgent. Sua tarefa é detectar divergência entre a spec aprovada e o que foi realmente implementado, cruzando critérios de aceite com commits do escopo informado.
 
 Este comando não substitui `/sdd.analyze` — analyze verifica conformidade com boas práticas; drift verifica fidelidade à spec como contrato.
 
-## Antes de Começar
+---
 
-1. Pergunte ao usuário qual feature verificar (ex: `FEATURE-003`)
-2. Verifique se `specs/<ID>/spec.md` existe — se não, informe e encerre
-3. Pergunte: "Quantos commits recentes verificar? (padrão: 20)"
+## Parâmetro Obrigatório
 
-## Processo
+O comando exige um escopo explícito. Sem ele, retorne erro imediatamente:
 
-### Passo 1 — Ler a Spec
+```
+Erro: parâmetro obrigatório ausente.
 
-Leia `specs/<ID>/spec.md` integralmente. Extraia e liste:
+Uso:
+  /sdd.drift feature=FEATURE-002   → verifica uma feature específica
+  /sdd.drift layer=sdd             → verifica a camada de comandos SDD
+  /sdd.drift layer=tdd             → verifica a camada de agentes TDD + OPS
+
+Nunca execute sem escopo — varrer o repositório inteiro gera custo alto
+e mistura contexto de camadas diferentes.
+```
+
+Encerre sem executar nenhuma outra etapa.
+
+---
+
+## Modo feature=<ID>
+
+### Passo 1 — Verificar a Spec
+
+Verifique se `specs/<ID>/spec.md` existe. Se não existir:
+```
+Spec não encontrada: specs/<ID>/spec.md
+Verifique o ID e tente novamente.
+```
+Encerre.
+
+### Passo 2 — Ler a Spec
+
+Leia `specs/<ID>/spec.md` integralmente. Extraia:
 - Todos os critérios de aceite (numerados)
 - Requisitos funcionais principais (RF)
 - Itens declarados em não-escopo
 
-### Passo 2 — Coletar Commits Relacionados
+### Passo 3 — Coletar Commits do Escopo
 
-Execute:
-
-```bash
-git log --oneline -N -- specs/<ID>/
-```
-
-Onde N é o número de commits definido no passo anterior.
-
-Em seguida, peça ao usuário os arquivos de código relacionados à feature (ex: `src/auth/`, `lib/rate-limit.ts`) e execute:
+Execute apenas:
 
 ```bash
-git log --oneline -N -- <arquivos mencionados>
+git log --oneline -- specs/<ID>/
 ```
 
-Se o usuário não souber os arquivos, use os commits da spec como proxy e sinalize que a cobertura pode ser incompleta.
+Não execute git log em outros caminhos. Se o projeto tiver arquivos de código relacionados à feature, informe ao usuário que commits fora de `specs/<ID>/` não são analisados neste modo e sinalize que a cobertura pode ser parcial.
 
-### Passo 3 — Cruzar Spec com Commits
+### Passo 4 — Cruzar e Produzir Relatório
 
-Para cada critério de aceite, verifique nas mensagens de commit e no diff disponível:
+Siga o processo de cruzamento e o formato de output definidos na seção **Processo de Cruzamento** e **Formato de Output** abaixo.
 
-- Há commit que claramente endereça este critério? → **Implementado**
+**Output:** `specs/<ID>/drift-report.md`
+
+---
+
+## Modo layer=sdd
+
+### Passo 1 — Definir Escopo
+
+Escopo fixo para este modo:
+- **Specs a ler:** todos os `specs/*/spec.md` (exclua `TDD-OPS-LAYER` e `EXAMPLE-*`)
+- **Commits a coletar:** apenas `.claude/commands/sdd.*.md`
+
+### Passo 2 — Ler as Specs
+
+Para cada `specs/FEATURE-*/spec.md` encontrado, extraia os critérios de aceite e requisitos funcionais. Ignore `EXAMPLE-*` e `TDD-OPS-LAYER`.
+
+### Passo 3 — Coletar Commits do Escopo
+
+Execute apenas:
+
+```bash
+git log --oneline -- .claude/commands/sdd.*.md
+```
+
+Não execute git log em outros caminhos.
+
+### Passo 4 — Cruzar e Produzir Relatório
+
+Siga o processo de cruzamento e o formato de output definidos abaixo.
+
+**Output:** `specs/SDD-LAYER/drift-report.md`
+
+---
+
+## Modo layer=tdd
+
+### Passo 1 — Definir Escopo
+
+Escopo fixo para este modo:
+- **Spec a ler:** `specs/TDD-OPS-LAYER/` (se existir drift-report anterior, use como referência, não como spec)
+- **Commits a coletar:** apenas `.claude/agents/` e `.claude/hooks/`
+
+### Passo 2 — Ler o Contexto da Camada
+
+Leia os arquivos de agente em `.claude/agents/*.md` e `.claude/hooks/*.md`. Para cada arquivo, extraia: propósito declarado, responsabilidades e o que não faz.
+
+### Passo 3 — Coletar Commits do Escopo
+
+Execute apenas:
+
+```bash
+git log --oneline -- .claude/agents/ .claude/hooks/
+```
+
+Não execute git log em outros caminhos.
+
+### Passo 4 — Cruzar e Produzir Relatório
+
+Siga o processo de cruzamento e o formato de output definidos abaixo.
+
+**Output:** `specs/TDD-OPS-LAYER/drift-report.md`
+
+---
+
+## Processo de Cruzamento
+
+Para cada critério de aceite ou responsabilidade declarada, verifique nas mensagens de commit:
+
+- Há commit que claramente endereça este item? → **Implementado**
 - Há commit relacionado mas inconclusivo? → **Parcialmente implementado** (sinalize)
-- Nenhum commit relacionado encontrado? → **Não implementado**
+- Nenhum commit encontrado? → **Não implementado**
 
-Para cada commit que não mapeia a nenhum critério de aceite:
+Para cada commit que não mapeia a nenhum critério:
 
 - O comportamento está na spec como requisito funcional? → OK
 - Está explicitamente no não-escopo? → **Implementação fora da spec**
 - Não está na spec nem no não-escopo? → **Drift não documentado**
 
-### Passo 4 — Produzir o Relatório
+---
 
-Crie `specs/<ID>/drift-report.md` com o seguinte formato:
+## Formato de Output
 
 ```markdown
-# Drift Report — <ID>
+# Drift Report — <ID ou LAYER>
 
 **Data:** <data>
+**Escopo:** feature=<ID> | layer=sdd | layer=tdd
 **Commits analisados:** <N>
 **Gerado por:** DriftAgent (claude-sonnet-4-6)
 
@@ -100,25 +182,18 @@ Crie `specs/<ID>/drift-report.md` com o seguinte formato:
 <DESALINHADO: ações necessárias antes do merge/release listadas acima>
 ```
 
-### Passo 5 — Apresentar e Salvar
-
-Apresente o resumo executivo ao usuário antes de mostrar o relatório completo. Destaque:
-- Quantos critérios estão sem implementação
-- Quantas implementações estão fora da spec
-
-Salve o arquivo após confirmação do usuário.
+---
 
 ## Regras Críticas
 
-- Não classifique como "Implementado" sem evidência em commit ou diff — use "Parcial" na dúvida
+- **Nunca varra o repositório inteiro** — apenas os caminhos do escopo informado
+- Não classifique como "Implementado" sem evidência em commit — use "Parcial" na dúvida
 - Não tome decisão sobre o que fazer com o drift — apresente as opções, a decisão é humana
-- Não modifique `spec.md` — se a spec precisar ser atualizada, oriente o usuário a fazer via `/sdd.specify`
-- Se o repositório não tiver histórico git suficiente, sinalize e reduza o escopo da análise
+- Não modifique `spec.md` — se precisar ser atualizada, oriente via `/sdd.specify`
+- Se o repositório não tiver histórico git suficiente, sinalize e reduza o escopo
 
 ## Output
 
-`specs/<ID>/drift-report.md` salvo após confirmação.
-
-Ao concluir, informe o veredicto:
+Arquivo salvo no caminho definido pelo modo (feature ou layer). Veredicto final:
 - **ALINHADO** — spec e implementação em sincronia
 - **DESALINHADO** — lista de ações necessárias antes do próximo release
