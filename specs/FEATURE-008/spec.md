@@ -54,6 +54,12 @@ Um agente (`onboarding.md`) que lê os artefatos canônicos do pipeline — cons
 - Não resume specs de exemplos (`EXAMPLE-*`) como features ativas
 - Não persiste o resumo em arquivo — apenas exibe na tela
 
+## Origem
+
+**Status:** Implementado antes da spec — formalizado via `/sdd.drift`
+
+O `onboarding.md` foi criado junto com a camada TDD + OPS (v3.0.0) sem spec prévia. Identificado como drift benéfico no relatório `specs/TDD-OPS-LAYER/drift-report.md` com a recomendação: *"criar spec retroativa transformando drift em spec retroativa — decisão humana"*. Esta spec foi gerada a partir da leitura do agente implementado, sem alterar seu comportamento.
+
 ## Dependências
 
 - Nenhuma dependência técnica — agente é inteiramente um prompt Markdown em `.claude/agents/`
