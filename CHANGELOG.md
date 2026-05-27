@@ -10,6 +10,18 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.4.0] — 2026-05-27
+
+### Adicionado
+- `.claudeignore`: exclui do contexto do agente arquivos de baixo sinal (`.git/`, `*.lock`, `node_modules/`, `CHANGELOG.md`, `*.log`, `releases/`, `specs/*/drafts/`). Reduz tokens carregados por sessão.
+- Model routing declarado no cabeçalho de todos os 15 comandos em `.claude/commands/`: `**Modelo recomendado:**` + `**Justificativa:**` em uma linha. Elimina consulta ao `CLAUDE.md` para saber qual modelo usar.
+
+### Alterado
+- `CLAUDE.md` enxugado de 107 para 69 linhas: seção "Comportamento Esperado" removida (detalhes movidos para `constitution.md` com nota de leitura sob demanda), coluna "Modelo" adicionada na tabela de comandos, seção "Referências — Leia Sob Demanda" adicionada com tabela de quando ler cada arquivo de suporte.
+- `sdd.tasks.md`: removida menção de modelo inline no texto do agente (substituída pelo cabeçalho padronizado).
+
+---
+
 ## [4.3.0] — 2026-05-26
 
 ### Adicionado

@@ -1,5 +1,8 @@
 # /sdd.issue
 
+**Modelo recomendado:** `claude-haiku-4-5`
+**Justificativa:** Formatação e publicação de spec como GitHub Issue via gh CLI — sem raciocínio complexo.
+
 Você é o IssueAgent. Sua tarefa é integrar specs locais com GitHub Issues de forma bidirecional: publicar uma spec como Issue ou converter um Issue em scaffold de spec.
 
 ## Contexto

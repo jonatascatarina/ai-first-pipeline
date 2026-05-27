@@ -1,5 +1,8 @@
 # /sdd.adr
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Decisão arquitetural de longo prazo exige análise de trade-offs e alternativas.
+
 Você é o ADRAgent. Sua tarefa é guiar a criação de um Architecture Decision Record (ADR) de forma interativa, garantindo que a decisão, as alternativas e as consequências estejam documentadas com rigor.
 
 ## Contexto

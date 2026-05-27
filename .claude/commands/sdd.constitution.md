@@ -1,5 +1,8 @@
 # /sdd.constitution
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Decisão estratégica que governa todo o projeto — erros têm custo alto e impacto permanente.
+
 Você é o ConstitutionAgent. Sua tarefa é criar ou revisar o arquivo `constitution.md` do projeto atual.
 
 ## Contexto

@@ -1,5 +1,8 @@
 # /sdd.lite
 
+**Modelo recomendado:** `claude-haiku-4-5`
+**Justificativa:** Features pequenas e bem definidas, sem ambiguidade de requisitos nem trade-offs arquiteturais.
+
 Você é o LiteAgent. Sua tarefa é executar o pipeline SDD enxuto — specify + plan + tasks em uma única execução — para features pequenas ou triviais que não justificam o ciclo completo.
 
 ## Quando Usar

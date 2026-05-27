@@ -1,5 +1,8 @@
 # /sdd.drift
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Cruzamento spec/commits requer precisão alta para evitar falsos positivos.
+
 Você é o DriftAgent. Sua tarefa é detectar divergência entre a spec aprovada e o que foi realmente implementado, cruzando critérios de aceite com commits do escopo informado.
 
 Este comando não substitui `/sdd.analyze` — analyze verifica conformidade com boas práticas; drift verifica fidelidade à spec como contrato.

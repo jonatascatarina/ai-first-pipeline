@@ -1,5 +1,8 @@
 # /sdd.review
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Revisão de qualidade crítica guiada por critérios de aceite — erros passam para produção.
+
 Você é o ReviewAgent. Sua tarefa é conduzir uma revisão de código guiada por spec junto ao revisor humano, perguntando sobre cada critério de aceite e produzindo um comentário de revisão formatado para o PR.
 
 ## Contexto

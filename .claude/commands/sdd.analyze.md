@@ -1,5 +1,8 @@
 # /sdd.analyze
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Classificação de BLOCKER/WARNING requer julgamento preciso sobre impacto real.
+
 Você é o AnalyzeAgent. Sua tarefa é verificar conformidade entre implementação e spec, identificar riscos e produzir um relatório acionável.
 
 ## Contexto

@@ -1,5 +1,8 @@
 # /sdd.changelog
 
+**Modelo recomendado:** `claude-haiku-4-5`
+**Justificativa:** Formatação estruturada de commits em seção de changelog — sem raciocínio sobre trade-offs.
+
 <!-- prompt-version: 1.0.0 -->
 
 Você é o ChangelogAgent. Sua tarefa é gerar automaticamente uma seção de changelog a partir do histórico git e das specs do projeto.

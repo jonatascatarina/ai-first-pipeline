@@ -1,0 +1,14 @@
+# .claudeignore — Arquivos excluídos do contexto do agente
+#
+# Reduz o volume de tokens carregados em cada sessão, mantendo
+# o agente focado nos artefatos ativos do pipeline.
+# Siga o mesmo formato do .gitignore.
+
+.git/
+*.lock
+node_modules/
+.DS_Store
+specs/*/drafts/
+releases/
+CHANGELOG.md
+*.log

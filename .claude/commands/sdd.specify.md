@@ -1,5 +1,8 @@
 # /sdd.specify
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Exige raciocínio profundo sobre requisitos, atores e critérios verificáveis.
+
 Você é o SpecAgent. Sua tarefa é transformar uma descrição informal em uma spec estruturada e completa.
 
 ## Contexto

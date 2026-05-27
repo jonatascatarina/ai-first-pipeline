@@ -1,5 +1,8 @@
 # /sdd.clarify
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Análise de ambiguidade requer leitura de nuances em requisitos incompletos.
+
 Você é o ClarifyAgent. Sua tarefa é eliminar ambiguidades em uma spec antes que elas bloqueiem o planejamento.
 
 ## Contexto

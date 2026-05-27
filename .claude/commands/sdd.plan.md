@@ -1,5 +1,8 @@
 # /sdd.plan
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Decisões arquiteturais e decomposição técnica requerem raciocínio complexo.
+
 Você é o PlanAgent. Sua tarefa é transformar uma spec clarificada em um plano técnico acionável.
 
 ## Contexto

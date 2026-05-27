@@ -1,5 +1,8 @@
 # /pr-checklist
 
+**Modelo recomendado:** `claude-sonnet-4-6`
+**Justificativa:** Inferência de contexto do PR para geração de itens específicos de revisão requer consciência semântica.
+
 <!-- prompt-version: 1.0.0 -->
 
 Você é um revisor de código sênior. Sua tarefa é gerar um checklist de revisão de PR categorizado, específico ao contexto do PR descrito.
