@@ -121,16 +121,42 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 
 ```mermaid
 flowchart TD
-    subgraph L1 ["Camada 1 — SDD  (Spec-Driven Development)"]
-        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
+    classDef sdd fill:#3B82F6,stroke:#1D4ED8,color:#fff,rx:8
+    classDef tdd fill:#10B981,stroke:#047857,color:#fff,rx:8
+    classDef ops fill:#8B5CF6,stroke:#6D28D9,color:#fff,rx:8
+    classDef layer fill:none,stroke-dasharray:5 5,rx:12
+
+    subgraph L1 ["⚙️  Camada 1 — Spec-Driven Development"]
+        A["📋 /sdd.specify\nDefine resultados e escopo"]
+        B["🔍 /sdd.clarify\nResolve ambiguidades"]
+        C["🗺️ /sdd.plan\nArquitetura e arquivos"]
+        D["✅ /sdd.tasks\nTasks atomicas + risco"]
+        A --> B --> C --> D
     end
-    subgraph L2 ["Camada 2 — TDD  (Test-Driven Development)"]
-        E["tdd-test-writer"] --> F["tdd-implementer"] --> G["refactor"]
+
+    subgraph L2 ["🧪  Camada 2 — Test-Driven Development"]
+        E["✍️ tdd-test-writer\nEscreve testes primeiro"]
+        F["⚡ tdd-implementer\nImplementa para passar"]
+        G["♻️ refactor\nLimpa e otimiza"]
+        E --> F --> G
     end
-    subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
-        H["/sdd.analyze"] --> I["security-auditor"] --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+
+    subgraph L3 ["🛡️  Camada 3 — Qualidade e Seguranca"]
+        H["🔬 /sdd.analyze\nVerificacao de gate"]
+        I["🔒 security-auditor\nScan de vulnerabilidades"]
+        J["👀 /sdd.review\nRevisao de codigo"]
+        K["🚦 quality-gate.yml\nPipeline de CI"]
+        L["📝 /sdd.changelog\nDocumenta mudancas"]
+        M["📢 /sdd.standup\nAtualizacao do time"]
+        H --> I --> J --> K --> L --> M
     end
-    L1 --> L2 --> L3
+
+    D["✅ /sdd.tasks\nTasks atomicas + risco"] --> E
+    G --> H
+
+    class A,B,C,D sdd
+    class E,F,G tdd
+    class H,I,J,K,L,M ops
 ```
 
 ### Camada 1 — SDD

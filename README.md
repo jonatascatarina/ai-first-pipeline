@@ -121,16 +121,42 @@ Or activate the specialized agents from Layer 2 (see below).
 
 ```mermaid
 flowchart TD
-    subgraph L1 ["Layer 1 — SDD  (Spec-Driven Development)"]
-        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
+    classDef sdd fill:#3B82F6,stroke:#1D4ED8,color:#fff,rx:8
+    classDef tdd fill:#10B981,stroke:#047857,color:#fff,rx:8
+    classDef ops fill:#8B5CF6,stroke:#6D28D9,color:#fff,rx:8
+    classDef layer fill:none,stroke-dasharray:5 5,rx:12
+
+    subgraph L1 ["⚙️  Layer 1 — Spec-Driven Development"]
+        A["📋 /sdd.specify\nDefine outcomes & scope"]
+        B["🔍 /sdd.clarify\nResolve ambiguities"]
+        C["🗺️ /sdd.plan\nArchitecture & files"]
+        D["✅ /sdd.tasks\nAtomic tasks + risk"]
+        A --> B --> C --> D
     end
-    subgraph L2 ["Layer 2 — TDD  (Test-Driven Development)"]
-        E["tdd-test-writer"] --> F["tdd-implementer"] --> G["refactor"]
+
+    subgraph L2 ["🧪  Layer 2 — Test-Driven Development"]
+        E["✍️ tdd-test-writer\nWrite tests first"]
+        F["⚡ tdd-implementer\nImplement to pass"]
+        G["♻️ refactor\nClean & optimize"]
+        E --> F --> G
     end
-    subgraph L3 ["Layer 3 — OPS  (Quality + Security)"]
-        H["/sdd.analyze"] --> I["security-auditor"] --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+
+    subgraph L3 ["🛡️  Layer 3 — Quality & Security"]
+        H["🔬 /sdd.analyze\nGate check"]
+        I["🔒 security-auditor\nVulnerability scan"]
+        J["👀 /sdd.review\nCode review"]
+        K["🚦 quality-gate.yml\nCI pipeline"]
+        L["📝 /sdd.changelog\nDocument changes"]
+        M["📢 /sdd.standup\nTeam update"]
+        H --> I --> J --> K --> L --> M
     end
-    L1 --> L2 --> L3
+
+    D["✅ /sdd.tasks\nAtomic tasks + risk"] --> E
+    G --> H
+
+    class A,B,C,D sdd
+    class E,F,G tdd
+    class H,I,J,K,L,M ops
 ```
 
 ### Layer 1 — SDD
