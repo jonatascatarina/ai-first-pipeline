@@ -60,14 +60,32 @@ claude
 
 ```
 /sdd.clarify
+```
+
+> `/sdd.clarify` → resolves open questions before any code is written
+
+```
 /sdd.plan
+```
+
+> `/sdd.plan` → defines file structure and architecture
+
+```
 /sdd.tasks
 ```
 
-> Resolves open questions, generates an implementation plan, and breaks it into
-> executable tasks in `specs/<FEATURE>/tasks.md`.
+> `/sdd.tasks` → breaks the plan into atomic tasks with risk color coding (🟢🟡🔴)
 
-> For a small or trivial feature, skip steps 4–5 and run `/sdd.lite` instead — it combines spec, plan and tasks in one shot.
+### 6. Implement guided by tasks
+
+Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work.
+Pass each task to your agent one at a time:
+
+```
+Read specs/<FEATURE>/tasks.md and execute task T1.
+```
+
+> For a small or trivial feature, skip steps 4–6 and run `/sdd.lite` instead — it combines spec, plan and tasks in one shot.
 
 ---
 

@@ -60,14 +60,32 @@ claude
 
 ```
 /sdd.clarify
+```
+
+> `/sdd.clarify` → resolve perguntas em aberto antes de qualquer codigo ser escrito
+
+```
 /sdd.plan
+```
+
+> `/sdd.plan` → define estrutura de arquivos e arquitetura
+
+```
 /sdd.tasks
 ```
 
-> Resolve perguntas em aberto, gera um plano de implementacao e decompoe em
-> tasks executaveis em `specs/<FEATURE>/tasks.md`.
+> `/sdd.tasks` → decompoe o plano em tasks atomicas com codigo de risco por cor (🟢🟡🔴)
 
-> Para features pequenas ou triviais, pule os passos 4–5 e use `/sdd.lite` — combina spec, plano e tasks em uma unica execucao.
+### 6. Implemente guiado pelas tasks
+
+Cada task em `specs/<FEATURE>/tasks.md` e uma unidade de trabalho autonoma.
+Passe cada task ao seu agente uma por vez:
+
+```
+Leia specs/<FEATURE>/tasks.md e execute a task T1.
+```
+
+> Para features pequenas ou triviais, pule os passos 4–6 e use `/sdd.lite` — combina spec, plano e tasks em uma unica execucao.
 
 ---
 
