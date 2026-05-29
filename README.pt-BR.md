@@ -122,16 +122,19 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 ```mermaid
 flowchart TD
     subgraph L1 ["Camada 1 — SDD  (Spec-Driven Development)"]
-        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
+        A["/sdd.constitution"] --> B["/sdd.specify"] --> C["/sdd.clarify"] --> D["/sdd.plan"] --> E["/sdd.tasks"] --> F["/sdd.analyze"]
     end
     subgraph L2 ["Camada 2 — TDD  (Test-Driven Development)"]
-        E(("tdd-test-writer")) --> F(("tdd-implementer")) --> G(("refactor"))
+        G(("tdd-test-writer")) --> H(("tdd-implementer")) --> I(("refactor"))
     end
     subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
-        H["/sdd.analyze"] --> I(("security-auditor")) --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+        J(("security-auditor")) --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"] --> N["/sdd.standup"]
     end
     L1 --> L2 --> L3
 ```
+
+> `[ ]` comando — acionado manualmente pelo desenvolvedor
+> `(( ))` agente — executa de forma autônoma com escopo isolado
 
 ### Camada 1 — SDD
 

@@ -122,16 +122,19 @@ Or activate the specialized agents from Layer 2 (see below).
 ```mermaid
 flowchart TD
     subgraph L1 ["Layer 1 — SDD  (Spec-Driven Development)"]
-        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
+        A["/sdd.constitution"] --> B["/sdd.specify"] --> C["/sdd.clarify"] --> D["/sdd.plan"] --> E["/sdd.tasks"] --> F["/sdd.analyze"]
     end
     subgraph L2 ["Layer 2 — TDD  (Test-Driven Development)"]
-        E(("tdd-test-writer")) --> F(("tdd-implementer")) --> G(("refactor"))
+        G(("tdd-test-writer")) --> H(("tdd-implementer")) --> I(("refactor"))
     end
     subgraph L3 ["Layer 3 — OPS  (Quality + Security)"]
-        H["/sdd.analyze"] --> I(("security-auditor")) --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+        J(("security-auditor")) --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"] --> N["/sdd.standup"]
     end
     L1 --> L2 --> L3
 ```
+
+> `[ ]` command — triggered manually by the developer
+> `(( ))` agent — runs autonomously with isolated scope
 
 ### Layer 1 — SDD
 
