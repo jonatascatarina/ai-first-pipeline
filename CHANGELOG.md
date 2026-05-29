@@ -10,6 +10,14 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.5.0] — 2026-05-29
+
+### Alterado
+- `README.md` e `README.pt-BR.md`: seção `## Prerequisites` (tabela simples) substituída por `## Quickstart` completo com 4 passos numerados — pré-requisitos com links, criação do repositório, abertura do agente, definição da constituição e início da primeira feature.
+- Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub); nota sobre alternativa `--private` adicionada.
+
+---
+
 ## [4.4.0] — 2026-05-27
 
 ### Adicionado
