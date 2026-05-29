@@ -37,6 +37,8 @@ claude
 
 O agente faz algumas perguntas e cuida do resto — spec, plano e tasks — e mostra o que fazer a seguir.
 
+> Se o agente nao iniciar automaticamente, execute `/sdd.start`.
+
 ---
 
 ## Escolha o seu caminho
@@ -172,6 +174,7 @@ Veja `docs/tdd-ops-guide.md` para o guia completo de ativacao das Camadas 2 e 3.
 
 | Comando | Quando usar |
 |---------|------------|
+| `/sdd.start` | Ponto de entrada — detecta o estado do projeto e guia o proximo passo |
 | `/sdd.constitution` | Uma vez por projeto — principios, stack, governanca |
 | `/sdd.specify` | Inicio de cada nova feature |
 | `/sdd.clarify` | Apos specify — resolva ambiguidades antes de planejar |

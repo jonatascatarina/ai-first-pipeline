@@ -37,6 +37,8 @@ claude
 
 The agent asks a few questions and handles the rest — spec, plan, and tasks — then shows you what to do next.
 
+> If the agent doesn't start automatically, run `/sdd.start`.
+
 ---
 
 ## Choose Your Path
@@ -172,6 +174,7 @@ See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3
 
 | Command | When to use |
 |---------|------------|
+| `/sdd.start` | Entry point — detects project state and guides you through what's next |
 | `/sdd.constitution` | Once per project — define principles, stack, governance |
 | `/sdd.specify` | Start of every new feature |
 | `/sdd.clarify` | After specify — resolve ambiguities before planning |
