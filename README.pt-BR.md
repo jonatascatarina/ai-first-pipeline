@@ -120,43 +120,29 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 ## Pipeline
 
 ```mermaid
-flowchart TD
-    classDef sdd fill:#3B82F6,stroke:#1D4ED8,color:#fff,rx:8
-    classDef tdd fill:#10B981,stroke:#047857,color:#fff,rx:8
-    classDef ops fill:#8B5CF6,stroke:#6D28D9,color:#fff,rx:8
-    classDef layer fill:none,stroke-dasharray:5 5,rx:12
+flowchart LR
+    classDef sdd fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF,font-weight:500
+    classDef tdd fill:#F0FDF4,stroke:#22C55E,color:#15803D,font-weight:500
+    classDef ops fill:#FAF5FF,stroke:#A855F7,color:#7E22CE,font-weight:500
 
-    subgraph L1 ["⚙️  Camada 1 — Spec-Driven Development"]
-        A["📋 /sdd.specify\nDefine resultados e escopo"]
-        B["🔍 /sdd.clarify\nResolve ambiguidades"]
-        C["🗺️ /sdd.plan\nArquitetura e arquivos"]
-        D["✅ /sdd.tasks\nTasks atomicas + risco"]
-        A --> B --> C --> D
+    subgraph L1 ["SDD — Desenvolvimento Orientado a Spec"]
+        A[specify] --> B[clarify] --> C[plan] --> D[tasks]
     end
 
-    subgraph L2 ["🧪  Camada 2 — Test-Driven Development"]
-        E["✍️ tdd-test-writer\nEscreve testes primeiro"]
-        F["⚡ tdd-implementer\nImplementa para passar"]
-        G["♻️ refactor\nLimpa e otimiza"]
-        E --> F --> G
+    subgraph L2 ["TDD — Desenvolvimento Orientado a Testes"]
+        E[test-writer] --> F[implementer] --> G[refactor]
     end
 
-    subgraph L3 ["🛡️  Camada 3 — Qualidade e Seguranca"]
-        H["🔬 /sdd.analyze\nVerificacao de gate"]
-        I["🔒 security-auditor\nScan de vulnerabilidades"]
-        J["👀 /sdd.review\nRevisao de codigo"]
-        K["🚦 quality-gate.yml\nPipeline de CI"]
-        L["📝 /sdd.changelog\nDocumenta mudancas"]
-        M["📢 /sdd.standup\nAtualizacao do time"]
-        H --> I --> J --> K --> L --> M
+    subgraph L3 ["OPS — Qualidade & Seguranca"]
+        H[analyze] --> I[security] --> J[review] --> K[quality-gate] --> L[changelog]
     end
 
-    D["✅ /sdd.tasks\nTasks atomicas + risco"] --> E
+    D --> E
     G --> H
 
     class A,B,C,D sdd
     class E,F,G tdd
-    class H,I,J,K,L,M ops
+    class H,I,J,K,L ops
 ```
 
 ### Camada 1 — SDD

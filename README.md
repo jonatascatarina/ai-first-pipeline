@@ -120,43 +120,29 @@ Or activate the specialized agents from Layer 2 (see below).
 ## Pipeline
 
 ```mermaid
-flowchart TD
-    classDef sdd fill:#3B82F6,stroke:#1D4ED8,color:#fff,rx:8
-    classDef tdd fill:#10B981,stroke:#047857,color:#fff,rx:8
-    classDef ops fill:#8B5CF6,stroke:#6D28D9,color:#fff,rx:8
-    classDef layer fill:none,stroke-dasharray:5 5,rx:12
+flowchart LR
+    classDef sdd fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF,font-weight:500
+    classDef tdd fill:#F0FDF4,stroke:#22C55E,color:#15803D,font-weight:500
+    classDef ops fill:#FAF5FF,stroke:#A855F7,color:#7E22CE,font-weight:500
 
-    subgraph L1 ["⚙️  Layer 1 — Spec-Driven Development"]
-        A["📋 /sdd.specify\nDefine outcomes & scope"]
-        B["🔍 /sdd.clarify\nResolve ambiguities"]
-        C["🗺️ /sdd.plan\nArchitecture & files"]
-        D["✅ /sdd.tasks\nAtomic tasks + risk"]
-        A --> B --> C --> D
+    subgraph L1 ["SDD — Spec-Driven Development"]
+        A[specify] --> B[clarify] --> C[plan] --> D[tasks]
     end
 
-    subgraph L2 ["🧪  Layer 2 — Test-Driven Development"]
-        E["✍️ tdd-test-writer\nWrite tests first"]
-        F["⚡ tdd-implementer\nImplement to pass"]
-        G["♻️ refactor\nClean & optimize"]
-        E --> F --> G
+    subgraph L2 ["TDD — Test-Driven Development"]
+        E[test-writer] --> F[implementer] --> G[refactor]
     end
 
-    subgraph L3 ["🛡️  Layer 3 — Quality & Security"]
-        H["🔬 /sdd.analyze\nGate check"]
-        I["🔒 security-auditor\nVulnerability scan"]
-        J["👀 /sdd.review\nCode review"]
-        K["🚦 quality-gate.yml\nCI pipeline"]
-        L["📝 /sdd.changelog\nDocument changes"]
-        M["📢 /sdd.standup\nTeam update"]
-        H --> I --> J --> K --> L --> M
+    subgraph L3 ["OPS — Quality & Security"]
+        H[analyze] --> I[security] --> J[review] --> K[quality-gate] --> L[changelog]
     end
 
-    D["✅ /sdd.tasks\nAtomic tasks + risk"] --> E
+    D --> E
     G --> H
 
     class A,B,C,D sdd
     class E,F,G tdd
-    class H,I,J,K,L,M ops
+    class H,I,J,K,L ops
 ```
 
 ### Layer 1 — SDD
