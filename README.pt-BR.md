@@ -45,9 +45,9 @@ claude
 /sdd.constitution
 ```
 
-Fale ao agente sobre o seu projeto: nome, stack, principios e regras do time. Salvo em `constitution.md`. Execute uma vez; atualize quando o contrato mudar.
+> O agente le `constitution.md` e define os principios imutaveis do seu projeto.
 
-### 4. Comece sua primeira feature
+### 4. Escreva a spec da sua primeira feature
 
 **Feature pequena ou trivial** — spec, plano e tasks em uma unica execucao:
 

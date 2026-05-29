@@ -45,9 +45,9 @@ claude
 /sdd.constitution
 ```
 
-Tell the agent about your project: name, stack, principles, and team rules. Saves to `constitution.md`. Run once; update when the contract changes.
+> The agent reads `constitution.md` and sets the immutable principles for your project.
 
-### 4. Start your first feature
+### 4. Write your first feature spec
 
 **Small or trivial feature** — spec, plan and tasks in one shot:
 
