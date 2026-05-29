@@ -49,19 +49,25 @@ claude
 
 ### 4. Escreva a spec da sua primeira feature
 
-**Feature pequena ou trivial** — spec, plano e tasks em uma unica execucao:
-
-```
-/sdd.lite
-```
-
-**Feature maior** — inicie o pipeline completo de 13 passos:
-
 ```
 /sdd.specify
 ```
 
-> Veja **[Escolha o seu caminho](#escolha-o-seu-caminho)** abaixo para o guia completo do pipeline.
+> Descreva o que quer construir. O agente gera `specs/<FEATURE>/spec.md`
+> com OUTCOMES, SCOPE e BEHAVIOR em notacao EARS.
+
+### 5. Clarifique ambiguidades, planeje e decomponha em tasks
+
+```
+/sdd.clarify
+/sdd.plan
+/sdd.tasks
+```
+
+> Resolve perguntas em aberto, gera um plano de implementacao e decompoe em
+> tasks executaveis em `specs/<FEATURE>/tasks.md`.
+
+> Para features pequenas ou triviais, pule os passos 4–5 e use `/sdd.lite` — combina spec, plano e tasks em uma unica execucao.
 
 ---
 
