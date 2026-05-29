@@ -17,7 +17,8 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 - Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub); nota sobre alternativa `--private` adicionada.
 - Passo 3 do Quickstart: descrição atualizada para blockquote explicando que o agente lê `constitution.md` e define os princípios imutáveis do projeto.
 - Passo 4 do Quickstart renomeado para "Write your first feature spec" com blockquote descritivo (OUTCOMES, SCOPE, BEHAVIOR em notação EARS).
-- Passo 5 adicionado: "Clarify ambiguities, plan and break into tasks" — cobre `/sdd.clarify`, `/sdd.plan` e `/sdd.tasks` com descrição compacta.
+- Passo 5 expandido: cada comando com seu próprio bloco e blockquote — `/sdd.clarify` resolve perguntas em aberto, `/sdd.plan` define estrutura e arquitetura, `/sdd.tasks` decompõe em tasks com código de risco por cor (🟢🟡🔴).
+- Passo 6 adicionado: "Implement guided by tasks" — instrução de como passar cada task ao agente uma por vez.
 - `/sdd.lite` movido para nota ao final do Quickstart como atalho opcional para features pequenas ou triviais.
 
 ---
