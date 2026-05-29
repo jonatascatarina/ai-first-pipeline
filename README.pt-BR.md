@@ -125,10 +125,10 @@ flowchart TD
         A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
     end
     subgraph L2 ["Camada 2 — TDD  (Test-Driven Development)"]
-        E["tdd-test-writer"] --> F["tdd-implementer"] --> G["refactor"]
+        E(("tdd-test-writer")) --> F(("tdd-implementer")) --> G(("refactor"))
     end
     subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
-        H["/sdd.analyze"] --> I["security-auditor"] --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+        H["/sdd.analyze"] --> I(("security-auditor")) --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
     end
     L1 --> L2 --> L3
 ```
