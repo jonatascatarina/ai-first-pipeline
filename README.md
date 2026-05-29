@@ -2,62 +2,156 @@
 
 [![Release](https://img.shields.io/badge/release-v4.4.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.4.0) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Last commit](https://img.shields.io/github/last-commit/jonatascatarina/ai-first-pipeline)](https://github.com/jonatascatarina/ai-first-pipeline/commits/main) [![Stars](https://img.shields.io/github/stars/jonatascatarina/ai-first-pipeline?style=social)](https://github.com/jonatascatarina/ai-first-pipeline/stargazers) [🇧🇷 Leia em português](./README.pt-BR.md)
 
-Lightweight SDD pipeline for AI coding agents.
+Lightweight SDD pipeline for AI coding agents.  
 Zero runtime dependencies, agent-agnostic, Markdown-only.
+
+---
+
+## What is this?
+
+A ready-to-use template that structures how you and your AI agent develop software together — from the first idea to the changelog. Instead of going straight to code, you define a spec, clarify ambiguities, build a plan, and let the agent implement task by task. All artifacts are plain Markdown files, versioned alongside your code.
 
 ---
 
 ## Quickstart
 
-**1. Clone or use this template**
+### Prerequisites
+- [Git](https://git-scm.com) installed
+- [GitHub CLI](https://cli.github.com) installed and authenticated (`gh auth login`)
+- An AI coding agent: [Claude Code](https://claude.ai/code), Cursor, or Copilot
 
-```
-gh repo create my-project --template jonatascatarina/ai-first-pipeline
+### 1. Create your project from this template
+
+```bash
+gh repo create my-project --template jonatascatarina/ai-first-pipeline --public --clone
+cd my-project
 ```
 
-**2. Define your project constitution**
+> This creates a public GitHub repo with the full pipeline structure and clones it locally.  
+> To create a private repo instead, replace `--public` with `--private`.
+
+### 2. Open your project with your AI agent
+
+```bash
+# Claude Code
+claude
+
+# Or open in Cursor / Copilot via your editor
+```
+
+### 3. Define your project constitution
 
 ```
 /sdd.constitution
 ```
 
-**3. Write your first feature spec**
+Tell the agent about your project: name, stack, principles, and team rules. Saves to `constitution.md`. Run once; update when the contract changes.
+
+### 4. Start your first feature
+
+**Small or trivial feature** — spec, plan and tasks in one shot:
+
+```
+/sdd.lite
+```
+
+**Larger feature** — start the full 13-step pipeline:
 
 ```
 /sdd.specify
 ```
 
-**4. Clarify, plan and break into tasks**
+> See **[Choose Your Path](#choose-your-path)** below for the complete pipeline walkthrough.
+
+---
+
+## Choose Your Path
+
+### Quick path — small or trivial features
+
+Run a single command that specifies, plans, and creates tasks in one shot:
+
+```
+/sdd.lite
+```
+
+Output: `specs/<FEATURE-NNN>/lite.md` with outcomes, up to 3 tasks, and overall risk. No clarify step, no separate analysis.
+
+---
+
+### Full path — larger features
+
+Follow the 13-step pipeline across three layers. Start here:
+
+**1. Set up your project (once per project)**
+
+```
+/sdd.constitution
+```
+
+Defines your project's principles, stack and governance rules. Saves to `constitution.md`. Run once; update when the contract changes.
+
+**2. Write the feature spec**
+
+```
+/sdd.specify
+```
+
+Describe the feature in plain language. The agent produces `specs/<FEATURE-NNN>/spec.md` with actors, acceptance criteria, and an explicit out-of-scope section.
+
+**3. Clarify, plan and break into tasks**
 
 ```
 /sdd.clarify
+```
+The agent reads the spec and asks the questions that would block planning. Answer them.
+
+```
 /sdd.plan
+```
+Generates `specs/<FEATURE-NNN>/plan.md` with the implementation approach, risks and dependencies.
+
+```
 /sdd.tasks
 ```
+Breaks the plan into self-contained executable tasks in `specs/<FEATURE-NNN>/tasks.md`.
 
-**5. Implement guided by tasks**
+**4. Implement task by task**
 
-Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work. Run it with your preferred agent.
+Each task in `tasks.md` is a self-contained unit of work with a clear completion criterion. To run a task, ask your agent:
 
-**6. (Optional) Integrate with GitHub Issues**
+```
+Read specs/FEATURE-NNN/tasks.md and execute task T1.
+```
 
-- Open Issues using `.github/ISSUE_TEMPLATE/feature-spec.md`
-- Use `/sdd.issue` to publish specs as Issues or convert Issues into spec scaffolds
+Or activate the specialized agents from Layer 2 (see below).
+
+**5. Review and ship**
+
+```
+/sdd.analyze    → conformance report: spec vs. code
+/sdd.review     → spec-guided code review (interactive)
+/sdd.drift      → detect divergence between spec and implementation
+/sdd.changelog  → generate changelog section from git log
+/sdd.standup    → generate a standup summary for the team
+```
 
 ---
 
 ## Pipeline
 
-```
- 1. SPEC      2. CLARIFY   3. PLAN      4. TASKS
-      ↓             ↓           ↓            ↓
- 5. WRITE     6. IMPLEMENT  7. REFACTOR  8. ANALYZE
-   TESTS
-      ↓             ↓           ↓            ↓
- 9. SEC AUDIT 10. REVIEW  11. QUALITY  12. CHANGELOG
-                              GATE
-                                           ↓
-                                      13. STANDUP
+```mermaid
+flowchart TD
+    subgraph L1 ["Layer 1 — SDD  (Spec-Driven Development)"]
+        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
+    end
+    subgraph L2 ["Layer 2 — TDD  (Test-Driven Development)"]
+        E["tdd-test-writer"] --> F["tdd-implementer"] --> G["refactor"]
+    end
+    subgraph L3 ["Layer 3 — OPS  (Quality + Security)"]
+        H["/sdd.analyze"] --> I["security-auditor"] --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
+    end
+    L1 --> L2 --> L3
 ```
 
 ### Layer 1 — SDD
@@ -71,46 +165,64 @@ Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work. Run it
 
 ### Layer 2 — TDD
 
-| Step | Agent | Output |
-|------|-------|--------|
-| 5. Write tests | `tdd-test-writer` | Test suite based on acceptance criteria |
-| 6. Implement | `tdd-implementer` | Minimal code to make tests pass |
-| 7. Refactor | `refactor` | Clean code, tests still green |
+Activate each agent by asking your agent to read its definition file and the current feature spec:
+
+```
+Read .claude/agents/tdd-test-writer.md and specs/FEATURE-NNN/spec.md, then execute.
+```
+
+| Step | Agent file | Output |
+|------|-----------|--------|
+| 5. Write tests | `.claude/agents/tdd-test-writer.md` | Test suite based on acceptance criteria |
+| 6. Implement | `.claude/agents/tdd-implementer.md` | Minimal code to make tests pass |
+| 7. Refactor | `.claude/agents/refactor.md` | Clean code, tests still green |
 
 ### Layer 3 — OPS
 
 | Step | Command / Agent | Output |
 |------|----------------|--------|
 | 8. Analyze | `/sdd.analyze` | `specs/<ID>/analysis-report.md` |
-| 9. Security audit | `security-auditor` | Report with BLOCKERs |
+| 9. Security audit | `.claude/agents/security-auditor.md` | Report with BLOCKERs |
 | 10. Review | `/sdd.review` | PR review comment (copy-paste ready) |
-| 11. Quality gate | `quality-gate.yml` | lint → test → sec-scan → build |
+| 11. Quality gate | `.github/workflows/quality-gate.yml` | lint → test → sec-scan → build |
 | 12. Changelog | `/sdd.changelog` | Updated `CHANGELOG.md` |
 | 13. Standup | `/sdd.standup` | Team standup summary |
 
-See `docs/tdd-ops-guide.md` for the complete activation guide for layers 2 and 3.
+See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3.
 
 ---
 
 ## All Commands
 
-| Command | Description |
-|---------|-------------|
-| `/sdd.constitution` | Define or update the project constitution |
-| `/sdd.specify` | Write a detailed feature spec |
-| `/sdd.clarify` | Generate clarification questions for a spec |
-| `/sdd.plan` | Create an implementation plan from the spec |
-| `/sdd.tasks` | Break the plan into executable tasks |
-| `/sdd.analyze` | Analyze spec or code conformance and produce a report |
-| `/sdd.lite` | Lightweight pipeline for small/trivial features (specify + plan + tasks in one run) |
-| `/sdd.drift` | Detect divergence between spec and implementation |
-| `/sdd.review` | Spec-guided code review with human reviewer |
-| `/sdd.changelog` | Generate changelog section from git log |
-| `/sdd.standup` | Generate daily standup summary |
-| `/sdd.issue` | Bidirectional GitHub Issues integration |
-| `/sdd.adr` | Interactively create an Architecture Decision Record |
-| `/sdd.epic` | Decompose a large initiative into features with dependency map |
-| `/pr-checklist` | Generate PR review checklist from title and description |
+### Spec and planning
+
+| Command | When to use |
+|---------|------------|
+| `/sdd.constitution` | Once per project — define principles, stack, governance |
+| `/sdd.specify` | Start of every new feature |
+| `/sdd.clarify` | After specify — resolve ambiguities before planning |
+| `/sdd.plan` | After clarify — implementation approach and risks |
+| `/sdd.tasks` | After plan — executable task breakdown |
+| `/sdd.lite` | Small or trivial features — spec + plan + tasks in one run |
+| `/sdd.epic` | Large initiative — decompose into features with dependency map |
+
+### Quality and review
+
+| Command | When to use |
+|---------|------------|
+| `/sdd.analyze` | After implementation — conformance report |
+| `/sdd.drift` | Anytime — detect spec vs. implementation divergence |
+| `/sdd.review` | Before merging — spec-guided code review |
+| `/sdd.changelog` | Before releasing — generate changelog from git log |
+| `/sdd.standup` | Daily — generate standup summary |
+| `/pr-checklist` | Before reviewing a PR — generate review checklist |
+
+### Architecture and integrations
+
+| Command | When to use |
+|---------|------------|
+| `/sdd.adr` | When making an architectural decision — create an ADR |
+| `/sdd.issue` | Publish specs as GitHub Issues or convert Issues into spec scaffolds |
 
 ---
 
@@ -126,7 +238,7 @@ ai-first-pipeline/
 ├── CONTRIBUTING.md         ← how to contribute
 ├── CHANGELOG.md            ← version history
 ├── .claude/
-│   ├── commands/           ← /sdd.* commands
+│   ├── commands/           ← /sdd.* commands (Markdown prompts)
 │   ├── agents/             ← TDD, refactor, security-auditor, onboarding agents
 │   └── hooks/              ← pre-tool-use: file protection rules
 ├── .github/
@@ -135,7 +247,7 @@ ai-first-pipeline/
 │       └── quality-gate.yml ← CI pipeline template (configure before activating)
 ├── docs/
 │   ├── adr/                ← Architecture Decision Records
-│   └── tdd-ops-guide.md    ← TDD and OPS layers guide
+│   └── tdd-ops-guide.md    ← TDD and OPS layers activation guide
 └── specs/                  ← feature specs and epics
     ├── EXAMPLE-001/        ← example: rate limiting (sliding window + Redis)
     └── EXAMPLE-002/        ← example: OAuth2 with GitHub (PKCE)
@@ -145,12 +257,12 @@ ai-first-pipeline/
 
 ## What's in `specs/`
 
-**Didactic examples (`EXAMPLE-*`)** — complete specs for real-world scenarios, built to demonstrate the expected format and depth. Use as reference when writing your own specs. Safe to delete when starting a real project.
+**Didactic examples (`EXAMPLE-*`)** — complete specs for real-world scenarios, demonstrating expected format and depth. Use as reference. Safe to delete when starting a real project.
 
 - `EXAMPLE-001/` — per-user rate limiting (REST API, sliding window, Redis)
 - `EXAMPLE-002/` — OAuth2 authentication with GitHub (Authorization Code Flow + PKCE)
 
-**Pipeline's own specs (`FEATURE-*`)** — this project was built using the process it documents. Specs `FEATURE-002` to `FEATURE-006` record how each command was specified, planned and implemented. Real development history — and additional examples of the pipeline in action.
+**Pipeline's own specs (`FEATURE-*`)** — this project was built using the process it documents. Specs `FEATURE-002` to `FEATURE-008` record how each command was specified, planned and implemented. Real development history — and additional examples of the pipeline in action.
 
 ---
 
