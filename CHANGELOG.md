@@ -16,8 +16,12 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 - `CLAUDE.md`: seção `## Auto-start` — ao iniciar qualquer sessão, o agente detecta o estado do projeto (novo, em andamento ou com tasks pendentes) e conduz conversa natural sem expor termos técnicos do pipeline.
 - `.claude/commands/sdd.start.md`: novo comando `/sdd.start` — ponto de entrada único e invisível do pipeline. Detecta idioma do usuário, conduz conversa natural, gera todos os artefatos em segundo plano e exibe apenas as tasks ao final.
 
+### Adicionado
+- `docs/pipeline-guide.md`: guia técnico das 6 fases do pipeline (constitution → specify → clarify → plan → tasks → analyze), drift detection, subagentes e model routing. Linkado no passo 3 do Quickstart.
+
 ### Alterado
 - `README.md` e `README.pt-BR.md`: Quickstart simplificado para 3 passos — criar repo, abrir agente, dizer o que quer construir. O pipeline completo agora é invisível ao usuário.
+- `README.md` e `README.pt-BR.md`: passo 3 atualizado com blockquotes descritivos e link para `docs/pipeline-guide.md`.
 - `README.md` e `README.pt-BR.md`: `/sdd.start` mencionado no passo 3 do Quickstart (fallback explícito) e adicionado como primeira entrada na tabela "All Commands".
 - Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub).
 
