@@ -18,6 +18,7 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ### Alterado
 - `README.md` e `README.pt-BR.md`: Quickstart simplificado para 3 passos — criar repo, abrir agente, dizer o que quer construir. O pipeline completo agora é invisível ao usuário.
+- `README.md` e `README.pt-BR.md`: `/sdd.start` mencionado no passo 3 do Quickstart (fallback explícito) e adicionado como primeira entrada na tabela "All Commands".
 - Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub).
 
 ---
