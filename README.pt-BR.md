@@ -35,9 +35,12 @@ claude
 
 3. **Diga o que quer construir**
 
-O agente faz algumas perguntas e cuida do resto — spec, plano e tasks — e mostra o que fazer a seguir.
+> O pipeline roda automaticamente em segundo plano.  
+> Seu agente fara algumas perguntas e retornara suas primeiras tasks prontas para implementar.
 
 > Se o agente nao iniciar automaticamente, execute `/sdd.start`.
+
+Como funciona → [docs/pipeline-guide.md](docs/pipeline-guide.md)
 
 ---
 

@@ -35,9 +35,12 @@ claude
 
 3. **Tell it what you want to build**
 
-The agent asks a few questions and handles the rest — spec, plan, and tasks — then shows you what to do next.
+> The pipeline runs automatically in the background.  
+> Your agent will ask a few questions and return your first tasks ready to implement.
 
 > If the agent doesn't start automatically, run `/sdd.start`.
+
+How it works → [docs/pipeline-guide.md](docs/pipeline-guide.md)
 
 ---
 
