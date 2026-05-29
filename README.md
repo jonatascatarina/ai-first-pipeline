@@ -15,77 +15,27 @@ A ready-to-use template that structures how you and your AI agent develop softwa
 
 ## Quickstart
 
-### Prerequisites
-- [Git](https://git-scm.com) installed
-- [GitHub CLI](https://cli.github.com) installed and authenticated (`gh auth login`)
-- An AI coding agent: [Claude Code](https://claude.ai/code), Cursor, or Copilot
+**Prerequisites:** [Git](https://git-scm.com), [GitHub CLI](https://cli.github.com) (`gh auth login`), and [Claude Code](https://claude.ai/code).
 
-### 1. Create your project from this template
+1. **Create your project from this template**
 
 ```bash
-gh repo create my-project --template jonatascatarina/ai-first-pipeline --public --clone
+gh repo create my-project \
+  --template jonatascatarina/ai-first-pipeline \
+  --public \
+  --clone
 cd my-project
 ```
 
-> This creates a public GitHub repo with the full pipeline structure and clones it locally.  
-> To create a private repo instead, replace `--public` with `--private`.
-
-### 2. Open your project with your AI agent
+2. **Open with your AI agent**
 
 ```bash
-# Claude Code
 claude
-
-# Or open in Cursor / Copilot via your editor
 ```
 
-### 3. Define your project constitution
+3. **Tell it what you want to build**
 
-```
-/sdd.constitution
-```
-
-> The agent reads `constitution.md` and sets the immutable principles for your project.
-
-### 4. Write your first feature spec
-
-```
-/sdd.specify
-```
-
-> Describe what you want to build. The agent generates `specs/<FEATURE>/spec.md`
-> with OUTCOMES, SCOPE, and BEHAVIOR in EARS notation.
-
-### 5. Clarify ambiguities, plan and break into tasks
-
-```
-/sdd.clarify
-```
-
-> `/sdd.clarify` → resolves open questions before any code is written
-
-```
-/sdd.plan
-```
-
-> `/sdd.plan` → defines file structure and architecture
-
-```
-/sdd.tasks
-```
-
-> `/sdd.tasks` → breaks the plan into atomic tasks with risk color coding (🟢🟡🔴)
-
-### 6. Implement guided by tasks
-
-Each task in `specs/<FEATURE>/tasks.md` is a self-contained unit of work.
-Pass each task to your agent one at a time:
-
-```
-Read specs/<FEATURE>/tasks.md and execute task T1.
-```
-
-> For a small or trivial feature, skip steps 4–6 and run `/sdd.lite` instead — it combines spec, plan and tasks in one shot.
+The agent asks a few questions and handles the rest — spec, plan, and tasks — then shows you what to do next.
 
 ---
 

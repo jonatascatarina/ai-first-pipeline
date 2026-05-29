@@ -15,77 +15,27 @@ Um template pronto para estruturar como voce e seu agente de IA desenvolvem soft
 
 ## Quickstart
 
-### Prerequisitos
-- [Git](https://git-scm.com) instalado
-- [GitHub CLI](https://cli.github.com) instalado e autenticado (`gh auth login`)
-- Um agente de IA: [Claude Code](https://claude.ai/code), Cursor ou Copilot
+**Prerequisitos:** [Git](https://git-scm.com), [GitHub CLI](https://cli.github.com) (`gh auth login`) e [Claude Code](https://claude.ai/code).
 
-### 1. Crie seu projeto a partir deste template
+1. **Crie seu projeto a partir deste template**
 
 ```bash
-gh repo create meu-projeto --template jonatascatarina/ai-first-pipeline --public --clone
+gh repo create meu-projeto \
+  --template jonatascatarina/ai-first-pipeline \
+  --public \
+  --clone
 cd meu-projeto
 ```
 
-> Cria um repositorio publico no GitHub com toda a estrutura do pipeline e clona localmente.  
-> Para criar um repositorio privado, substitua `--public` por `--private`.
-
-### 2. Abra o projeto com seu agente de IA
+2. **Abra com seu agente de IA**
 
 ```bash
-# Claude Code
 claude
-
-# Ou abra no Cursor / Copilot pelo seu editor
 ```
 
-### 3. Defina a constituicao do projeto
+3. **Diga o que quer construir**
 
-```
-/sdd.constitution
-```
-
-> O agente le `constitution.md` e define os principios imutaveis do seu projeto.
-
-### 4. Escreva a spec da sua primeira feature
-
-```
-/sdd.specify
-```
-
-> Descreva o que quer construir. O agente gera `specs/<FEATURE>/spec.md`
-> com OUTCOMES, SCOPE e BEHAVIOR em notacao EARS.
-
-### 5. Clarifique ambiguidades, planeje e decomponha em tasks
-
-```
-/sdd.clarify
-```
-
-> `/sdd.clarify` → resolve perguntas em aberto antes de qualquer codigo ser escrito
-
-```
-/sdd.plan
-```
-
-> `/sdd.plan` → define estrutura de arquivos e arquitetura
-
-```
-/sdd.tasks
-```
-
-> `/sdd.tasks` → decompoe o plano em tasks atomicas com codigo de risco por cor (🟢🟡🔴)
-
-### 6. Implemente guiado pelas tasks
-
-Cada task em `specs/<FEATURE>/tasks.md` e uma unidade de trabalho autonoma.
-Passe cada task ao seu agente uma por vez:
-
-```
-Leia specs/<FEATURE>/tasks.md e execute a task T1.
-```
-
-> Para features pequenas ou triviais, pule os passos 4–6 e use `/sdd.lite` — combina spec, plano e tasks em uma unica execucao.
+O agente faz algumas perguntas e cuida do resto — spec, plano e tasks — e mostra o que fazer a seguir.
 
 ---
 

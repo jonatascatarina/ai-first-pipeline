@@ -5,6 +5,32 @@ Para detalhes de comportamento por fase, leia `constitution.md` sob demanda, nã
 
 ---
 
+## Auto-start
+
+Ao iniciar qualquer sessão, verifique:
+
+1. Se `constitution.md` está vazio ou não foi preenchido:
+   → Pergunte ao usuário: "Olá! O que você quer construir?"
+   → Com a resposta, execute o pipeline completo em silêncio:
+      constitution → specify → clarify → plan → tasks
+   → Não mencione nomes técnicos (constitution, spec, EARS)
+   → Faça perguntas naturais quando precisar de mais contexto:
+      "Para quem é esse produto?"
+      "Qual o maior problema que ele resolve?"
+      "Tem alguma restrição técnica que eu deva saber?"
+   → Ao terminar, mostre apenas:
+      "Pronto! Aqui estão as primeiras tarefas para começar:"
+      [lista as tasks geradas]
+
+2. Se `constitution.md` já foi preenchido e existem specs em `specs/`:
+   → Pergunte: "Bem-vindo de volta! Quer continuar uma feature existente ou começar algo novo?"
+   → Mostre as features em andamento com status resumido
+
+3. Se existem tasks pendentes em `specs/*/tasks.md`:
+   → Pergunte: "Tem tasks pendentes em [FEATURE]. Quer continuar?"
+
+---
+
 ## Model Routing
 
 | Modelo | Tarefas | Fases do Pipeline |
@@ -52,6 +78,7 @@ Para detalhes de comportamento por fase, leia `constitution.md` sob demanda, nã
 
 | Comando | Modelo | Descrição |
 |---------|--------|-----------|
+| `/sdd.start` | sonnet | Ponto de entrada único — detecta estado e conduz conversa natural |
 | `/sdd.constitution` | sonnet | Define ou atualiza a constituição do projeto |
 | `/sdd.specify` | sonnet | Cria spec detalhada de uma feature |
 | `/sdd.clarify` | sonnet | Gera perguntas de clarificação para uma spec |
