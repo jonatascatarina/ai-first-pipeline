@@ -12,14 +12,13 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [4.5.0] — 2026-05-29
 
+### Adicionado
+- `CLAUDE.md`: seção `## Auto-start` — ao iniciar qualquer sessão, o agente detecta o estado do projeto (novo, em andamento ou com tasks pendentes) e conduz conversa natural sem expor termos técnicos do pipeline.
+- `.claude/commands/sdd.start.md`: novo comando `/sdd.start` — ponto de entrada único e invisível do pipeline. Detecta idioma do usuário, conduz conversa natural, gera todos os artefatos em segundo plano e exibe apenas as tasks ao final.
+
 ### Alterado
-- `README.md` e `README.pt-BR.md`: seção `## Prerequisites` (tabela simples) substituída por `## Quickstart` completo com 4 passos numerados — pré-requisitos com links, criação do repositório, abertura do agente, definição da constituição e início da primeira feature.
-- Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub); nota sobre alternativa `--private` adicionada.
-- Passo 3 do Quickstart: descrição atualizada para blockquote explicando que o agente lê `constitution.md` e define os princípios imutáveis do projeto.
-- Passo 4 do Quickstart renomeado para "Write your first feature spec" com blockquote descritivo (OUTCOMES, SCOPE, BEHAVIOR em notação EARS).
-- Passo 5 expandido: cada comando com seu próprio bloco e blockquote — `/sdd.clarify` resolve perguntas em aberto, `/sdd.plan` define estrutura e arquitetura, `/sdd.tasks` decompõe em tasks com código de risco por cor (🟢🟡🔴).
-- Passo 6 adicionado: "Implement guided by tasks" — instrução de como passar cada task ao agente uma por vez.
-- `/sdd.lite` movido para nota ao final do Quickstart como atalho opcional para features pequenas ou triviais.
+- `README.md` e `README.pt-BR.md`: Quickstart simplificado para 3 passos — criar repo, abrir agente, dizer o que quer construir. O pipeline completo agora é invisível ao usuário.
+- Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub).
 
 ---
 
