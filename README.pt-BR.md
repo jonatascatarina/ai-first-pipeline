@@ -120,29 +120,17 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 ## Pipeline
 
 ```mermaid
-flowchart LR
-    classDef sdd fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF,font-weight:500
-    classDef tdd fill:#F0FDF4,stroke:#22C55E,color:#15803D,font-weight:500
-    classDef ops fill:#FAF5FF,stroke:#A855F7,color:#7E22CE,font-weight:500
-
-    subgraph L1 ["SDD — Desenvolvimento Orientado a Spec"]
-        A[specify] --> B[clarify] --> C[plan] --> D[tasks]
+flowchart TD
+    subgraph L1 ["Camada 1 — SDD  (Spec-Driven Development)"]
+        A["/sdd.specify"] --> B["/sdd.clarify"] --> C["/sdd.plan"] --> D["/sdd.tasks"]
     end
-
-    subgraph L2 ["TDD — Desenvolvimento Orientado a Testes"]
-        E[test-writer] --> F[implementer] --> G[refactor]
+    subgraph L2 ["Camada 2 — TDD  (Test-Driven Development)"]
+        E["tdd-test-writer"] --> F["tdd-implementer"] --> G["refactor"]
     end
-
-    subgraph L3 ["OPS — Qualidade & Seguranca"]
-        H[analyze] --> I[security] --> J[review] --> K[quality-gate] --> L[changelog]
+    subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
+        H["/sdd.analyze"] --> I["security-auditor"] --> J["/sdd.review"] --> K["quality-gate.yml"] --> L["/sdd.changelog"] --> M["/sdd.standup"]
     end
-
-    D --> E
-    G --> H
-
-    class A,B,C,D sdd
-    class E,F,G tdd
-    class H,I,J,K,L ops
+    L1 --> L2 --> L3
 ```
 
 ### Camada 1 — SDD
