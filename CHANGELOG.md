@@ -15,6 +15,8 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 ### Alterado
 - `README.md` e `README.pt-BR.md`: seção `## Prerequisites` (tabela simples) substituída por `## Quickstart` completo com 4 passos numerados — pré-requisitos com links, criação do repositório, abertura do agente, definição da constituição e início da primeira feature.
 - Comando `gh repo create` corrigido: adicionada flag `--public` obrigatória (repositórios privados não suportam templates no GitHub); nota sobre alternativa `--private` adicionada.
+- Passo 3 do Quickstart: descrição atualizada para blockquote explicando que o agente lê `constitution.md` e define os princípios imutáveis do projeto.
+- Passo 4 do Quickstart renomeado: "Start your first feature" → "Write your first feature spec" (EN) / "Escreva a spec da sua primeira feature" (PT-BR).
 
 ---
 
