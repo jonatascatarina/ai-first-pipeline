@@ -60,7 +60,7 @@ Saida: `specs/<FEATURE-NNN>/lite.md` com outcomes, ate 3 tasks e risco geral. Se
 
 ### Caminho completo — features maiores
 
-Siga o pipeline de 13 passos em tres camadas. Comece aqui:
+Siga o pipeline de 12 passos em tres camadas. Comece aqui:
 
 **1. Configure seu projeto (uma vez por projeto)**
 
@@ -111,8 +111,7 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 /sdd.analyze    → relatorio de conformidade: spec vs. codigo
 /sdd.review     → revisao de codigo guiada por spec (interativa)
 /sdd.drift      → detecta divergencia entre spec e implementacao
-/sdd.changelog  → gera secao de changelog a partir do git log
-/sdd.standup    → gera resumo de standup para o time
+/sdd.wrap       → gera changelog e resumo de standup
 ```
 
 ---
@@ -131,12 +130,12 @@ flowchart TD
         G["tdd-test-writer"] --> H["tdd-implementer"] --> I["refactor"]
     end
     subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
-        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"] --> N["/sdd.standup"]
+        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.wrap"]
     end
     L1 --> L2 --> L3
 
     class G,H,I,J agent
-    class A,B,C,D,E,F,K,L,M,N command
+    class A,B,C,D,E,F,K,L,M command
 ```
 
 > Borda escura — agente (autônomo, escopo isolado)
@@ -173,8 +172,7 @@ Leia .claude/agents/tdd-test-writer.md e specs/FEATURE-NNN/spec.md e execute.
 | 9. Auditar seguranca | `.claude/agents/security-auditor.md` | Relatorio com BLOCKERs |
 | 10. Revisar | `/sdd.review` | Comentario de PR copiavel |
 | 11. Quality gate | `.github/workflows/quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Changelog | `/sdd.changelog` | `CHANGELOG.md` atualizado |
-| 13. Standup | `/sdd.standup` | Resumo para o time |
+| 12. Wrap | `/sdd.wrap` | `CHANGELOG.md` atualizado + resumo de standup |
 
 Veja `docs/tdd-ops-guide.md` para o guia completo de ativacao das Camadas 2 e 3.
 
@@ -202,8 +200,7 @@ Veja `docs/tdd-ops-guide.md` para o guia completo de ativacao das Camadas 2 e 3.
 | `/sdd.analyze` | Apos implementacao — relatorio de conformidade |
 | `/sdd.drift` | A qualquer momento — detecta divergencia spec vs. implementacao |
 | `/sdd.review` | Antes de mergear — revisao de codigo guiada por spec |
-| `/sdd.changelog` | Antes de lancar — gera changelog a partir do git log |
-| `/sdd.standup` | Diariamente — gera resumo de standup |
+| `/sdd.wrap` | Final do ciclo — gera changelog e standup em uma execucao |
 | `/pr-checklist` | Antes de revisar um PR — gera checklist de revisao |
 
 ### Arquitetura e integracoes

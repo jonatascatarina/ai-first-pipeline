@@ -70,6 +70,22 @@ Detecta divergências entre spec e implementação atual via `git log`. Produz u
 
 ---
 
+## Por que não há camada BDD
+
+BDD (Behavior-Driven Development) não é uma camada separada neste pipeline por decisão de design deliberada.
+
+A notação EARS usada em `/sdd.specify` já cumpre o papel do Given-When-Then no contexto AI-first:
+
+- **Given** → contexto capturado em `## Atores` e `## Contexto`
+- **When** → trigger descrito no padrão EARS: *"When <evento>, the system shall <resposta>"*
+- **Then** → `## Critérios de Aceite` com condições verificáveis e mensuráveis
+
+Adicionar uma camada BDD separada seria cerimônia: um arquivo extra com o mesmo conteúdo da spec reformatado. O agente já lê a spec e escreve testes baseados nos critérios de aceite — sem intermediário.
+
+**Quando EARS cobre o mesmo terreno que Given-When-Then**, duplicar a camada aumenta o custo de manutenção sem adicionar valor verificável.
+
+---
+
 ## Subagentes
 
 Os subagentes executam fases especializadas das Camadas 2 (TDD) e 3 (OPS). São ativados explicitamente pedindo ao agente que leia o arquivo de definição:

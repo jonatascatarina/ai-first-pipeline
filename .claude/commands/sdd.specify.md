@@ -56,6 +56,18 @@ Produza `specs/<ID>/spec.md` com as seguintes seções obrigatórias:
 ## Requisitos Não-Funcionais
 <Performance, disponibilidade, segurança, escalabilidade — com valores concretos>
 
+## Observability Requirements
+<O que precisa ser visível em produção para operar esta feature com confiança>
+
+### Métricas
+<Quais métricas expor — ex: latência p99, taxa de erro, throughput. Formato: nome, tipo (counter/gauge/histogram), label>
+
+### Logs
+<Quais eventos estruturar em log — ex: falha de autenticação, threshold atingido. Campos obrigatórios e nível (INFO/WARN/ERROR)>
+
+### Alertas
+<Quais condições devem gerar alerta — ex: taxa de erro > 1% por 5 min. Inclua severidade e ação esperada>
+
 ## Critérios de Aceite
 <Lista numerada de condições verificáveis — cada item deve ser testável>
 
@@ -79,6 +91,7 @@ Antes de salvar, verifique:
 - O não-escopo está explícito?
 - As perguntas em aberto estão listadas?
 - Requisitos não-funcionais têm valores numéricos onde aplicável?
+- A seção Observability Requirements está preenchida com pelo menos uma métrica, um log e um alerta?
 
 ### Passo 5 — Apresentar e Salvar
 

@@ -10,6 +10,23 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.6.0] — 2026-05-31
+
+### Adicionado
+- `specs/*/spec.md`: seção obrigatória `## Observability Requirements` adicionada ao template do `/sdd.specify`, com subseções Métricas, Logs e Alertas. Validação incluída no Passo 4. Sem novo comando — é parte do specify.
+- `.claude/commands/sdd.wrap.md`: novo comando `/sdd.wrap` que combina geração de seção de changelog e resumo de standup em uma única execução ao final do ciclo.
+- `docs/pipeline-guide.md`: seção "Por que não há camada BDD" — documenta a decisão de não adicionar BDD como camada separada: a notação EARS do `/sdd.specify` já cobre Given-When-Then no contexto AI-first; uma camada extra seria cerimônia sem valor verificável.
+
+### Removido
+- `.claude/commands/sdd.changelog.md`: consolidado em `/sdd.wrap`.
+- `.claude/commands/sdd.standup.md`: consolidado em `/sdd.wrap`.
+
+### Alterado
+- `README.md` e `README.pt-BR.md`: diagrama Mermaid e tabela da Camada 3 atualizados — `sdd.changelog` e `sdd.standup` substituídos por `sdd.wrap`. Pipeline passa de 13 para 12 passos.
+- `CLAUDE.md`: tabela de comandos atualizada para refletir remoção de `sdd.changelog`/`sdd.standup` e adição de `sdd.wrap`.
+
+---
+
 ## [4.5.0] — 2026-05-29
 
 ### Adicionado

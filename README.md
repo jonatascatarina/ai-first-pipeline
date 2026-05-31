@@ -60,7 +60,7 @@ Output: `specs/<FEATURE-NNN>/lite.md` with outcomes, up to 3 tasks, and overall 
 
 ### Full path — larger features
 
-Follow the 13-step pipeline across three layers. Start here:
+Follow the 12-step pipeline across three layers. Start here:
 
 **1. Set up your project (once per project)**
 
@@ -111,8 +111,7 @@ Or activate the specialized agents from Layer 2 (see below).
 /sdd.analyze    → conformance report: spec vs. code
 /sdd.review     → spec-guided code review (interactive)
 /sdd.drift      → detect divergence between spec and implementation
-/sdd.changelog  → generate changelog section from git log
-/sdd.standup    → generate a standup summary for the team
+/sdd.wrap       → generate changelog and standup summary
 ```
 
 ---
@@ -131,12 +130,12 @@ flowchart TD
         G["tdd-test-writer"] --> H["tdd-implementer"] --> I["refactor"]
     end
     subgraph L3 ["Layer 3 — OPS  (Quality + Security)"]
-        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"] --> N["/sdd.standup"]
+        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.wrap"]
     end
     L1 --> L2 --> L3
 
     class G,H,I,J agent
-    class A,B,C,D,E,F,K,L,M,N command
+    class A,B,C,D,E,F,K,L,M command
 ```
 
 > Solid border — agent (autonomous, isolated scope)
@@ -173,8 +172,7 @@ Read .claude/agents/tdd-test-writer.md and specs/FEATURE-NNN/spec.md, then execu
 | 9. Security audit | `.claude/agents/security-auditor.md` | Report with BLOCKERs |
 | 10. Review | `/sdd.review` | PR review comment (copy-paste ready) |
 | 11. Quality gate | `.github/workflows/quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Changelog | `/sdd.changelog` | Updated `CHANGELOG.md` |
-| 13. Standup | `/sdd.standup` | Team standup summary |
+| 12. Wrap | `/sdd.wrap` | Updated `CHANGELOG.md` + standup summary |
 
 See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3.
 
@@ -202,8 +200,7 @@ See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3
 | `/sdd.analyze` | After implementation — conformance report |
 | `/sdd.drift` | Anytime — detect spec vs. implementation divergence |
 | `/sdd.review` | Before merging — spec-guided code review |
-| `/sdd.changelog` | Before releasing — generate changelog from git log |
-| `/sdd.standup` | Daily — generate standup summary |
+| `/sdd.wrap` | End of cycle — generate changelog and standup in one run |
 | `/pr-checklist` | Before reviewing a PR — generate review checklist |
 
 ### Architecture and integrations

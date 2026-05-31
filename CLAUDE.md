@@ -91,6 +91,5 @@ Ao iniciar qualquer sessão, verifique:
 | `/sdd.issue` | haiku | Publica spec como Issue ou converte Issue em scaffold |
 | `/sdd.adr` | sonnet | Guia a criação interativa de um ADR |
 | `/sdd.epic` | sonnet | Decompõe iniciativa grande em features com mapa de dependências |
-| `/sdd.changelog` | haiku | Gera seção de changelog a partir do git log |
-| `/sdd.standup` | haiku | Gera resumo de standup diário |
+| `/sdd.wrap` | haiku | Gera changelog e resumo de standup ao final do ciclo |
 | `/pr-checklist` | sonnet | Gera checklist de revisão de PR |
