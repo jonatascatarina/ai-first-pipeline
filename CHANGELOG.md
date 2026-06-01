@@ -1,5 +1,7 @@
 # Changelog
 
+[![Release](https://img.shields.io/badge/release-v4.7.0-blue)](https://github.com/jonatascatarina/ai-first-pipeline/releases/tag/v4.7.0)
+
 Todas as mudanças notáveis neste projeto são documentadas aqui.
 
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
