@@ -10,6 +10,22 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [4.7.0] — 2026-05-31
+
+### Removido
+- `.claude/commands/sdd.standup.md`: removido definitivamente. Geração de standup não é responsabilidade do pipeline de spec/desenvolvimento — é overhead de processo que varia por time.
+- `.claude/commands/sdd.wrap.md`: removido (era combinação de changelog + standup introduzida em v4.6.0; sem standup, o wrap não tem razão de existir).
+
+### Adicionado
+- `.claude/commands/sdd.changelog.md`: restaurado como comando autônomo — única responsabilidade: gerar seção de changelog a partir do git log.
+
+### Alterado
+- `README.md` e `README.pt-BR.md`: diagrama Mermaid e tabela da Camada 3 atualizados — Layer 3 termina em `/sdd.changelog`. Pipeline permanece em 12 passos.
+- `docs/tdd-ops-guide.md`: step count atualizado para 12, step 13 (STANDUP) removido da lista e da referência de arquivos.
+- `CLAUDE.md`: tabela de comandos atualizada.
+
+---
+
 ## [4.6.0] — 2026-05-31
 
 ### Adicionado

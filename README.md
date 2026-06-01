@@ -111,7 +111,7 @@ Or activate the specialized agents from Layer 2 (see below).
 /sdd.analyze    → conformance report: spec vs. code
 /sdd.review     → spec-guided code review (interactive)
 /sdd.drift      → detect divergence between spec and implementation
-/sdd.wrap       → generate changelog and standup summary
+/sdd.changelog  → generate changelog section from git log
 ```
 
 ---
@@ -130,7 +130,7 @@ flowchart TD
         G["tdd-test-writer"] --> H["tdd-implementer"] --> I["refactor"]
     end
     subgraph L3 ["Layer 3 — OPS  (Quality + Security)"]
-        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.wrap"]
+        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"]
     end
     L1 --> L2 --> L3
 
@@ -172,7 +172,7 @@ Read .claude/agents/tdd-test-writer.md and specs/FEATURE-NNN/spec.md, then execu
 | 9. Security audit | `.claude/agents/security-auditor.md` | Report with BLOCKERs |
 | 10. Review | `/sdd.review` | PR review comment (copy-paste ready) |
 | 11. Quality gate | `.github/workflows/quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Wrap | `/sdd.wrap` | Updated `CHANGELOG.md` + standup summary |
+| 12. Changelog | `/sdd.changelog` | Updated `CHANGELOG.md` |
 
 See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3.
 
@@ -200,7 +200,7 @@ See `docs/tdd-ops-guide.md` for the complete activation guide for Layers 2 and 3
 | `/sdd.analyze` | After implementation — conformance report |
 | `/sdd.drift` | Anytime — detect spec vs. implementation divergence |
 | `/sdd.review` | Before merging — spec-guided code review |
-| `/sdd.wrap` | End of cycle — generate changelog and standup in one run |
+| `/sdd.changelog` | Before releasing — generate changelog from git log |
 | `/pr-checklist` | Before reviewing a PR — generate review checklist |
 
 ### Architecture and integrations

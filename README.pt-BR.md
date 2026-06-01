@@ -111,7 +111,7 @@ Ou ative os agentes especializados da Camada 2 (veja abaixo).
 /sdd.analyze    → relatorio de conformidade: spec vs. codigo
 /sdd.review     → revisao de codigo guiada por spec (interativa)
 /sdd.drift      → detecta divergencia entre spec e implementacao
-/sdd.wrap       → gera changelog e resumo de standup
+/sdd.changelog  → gera secao de changelog a partir do git log
 ```
 
 ---
@@ -130,7 +130,7 @@ flowchart TD
         G["tdd-test-writer"] --> H["tdd-implementer"] --> I["refactor"]
     end
     subgraph L3 ["Camada 3 — OPS  (Qualidade + Seguranca)"]
-        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.wrap"]
+        J["security-auditor"] --> K["/sdd.review"] --> L["quality-gate.yml"] --> M["/sdd.changelog"]
     end
     L1 --> L2 --> L3
 
@@ -172,7 +172,7 @@ Leia .claude/agents/tdd-test-writer.md e specs/FEATURE-NNN/spec.md e execute.
 | 9. Auditar seguranca | `.claude/agents/security-auditor.md` | Relatorio com BLOCKERs |
 | 10. Revisar | `/sdd.review` | Comentario de PR copiavel |
 | 11. Quality gate | `.github/workflows/quality-gate.yml` | lint → test → sec-scan → build |
-| 12. Wrap | `/sdd.wrap` | `CHANGELOG.md` atualizado + resumo de standup |
+| 12. Changelog | `/sdd.changelog` | `CHANGELOG.md` atualizado |
 
 Veja `docs/tdd-ops-guide.md` para o guia completo de ativacao das Camadas 2 e 3.
 
@@ -200,7 +200,7 @@ Veja `docs/tdd-ops-guide.md` para o guia completo de ativacao das Camadas 2 e 3.
 | `/sdd.analyze` | Apos implementacao — relatorio de conformidade |
 | `/sdd.drift` | A qualquer momento — detecta divergencia spec vs. implementacao |
 | `/sdd.review` | Antes de mergear — revisao de codigo guiada por spec |
-| `/sdd.wrap` | Final do ciclo — gera changelog e standup em uma execucao |
+| `/sdd.changelog` | Antes de lancar — gera changelog a partir do git log |
 | `/pr-checklist` | Antes de revisar um PR — gera checklist de revisao |
 
 ### Arquitetura e integracoes

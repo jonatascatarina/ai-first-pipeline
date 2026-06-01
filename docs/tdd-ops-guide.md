@@ -1,6 +1,6 @@
 # Guia TDD + OPS — Camadas 2 e 3 do Pipeline AI-First
 
-Este documento descreve como as camadas de TDD e OPS se integram ao pipeline SDD existente, formando um ciclo completo de 13 passos do requisito ao deploy.
+Este documento descreve como as camadas de TDD e OPS se integram ao pipeline SDD existente, formando um ciclo completo de 12 passos do requisito ao deploy.
 
 ---
 
@@ -22,7 +22,7 @@ Camada 3 — OPS (Quality Gate + Segurança)
 
 ---
 
-## Os 13 Passos do Pipeline Completo
+## Os 12 Passos do Pipeline Completo
 
 ```
  1. SPEC         /sdd.specify          → specs/<ID>/spec.md
@@ -34,10 +34,9 @@ Camada 3 — OPS (Quality Gate + Segurança)
  7. REFACTOR     refactor              → código limpo, testes ainda verdes
  8. ANALYZE      /sdd.analyze          → specs/<ID>/analysis-report.md
  9. SEC AUDIT    security-auditor      → relatório de segurança com BLOCKERs
-10. REVIEW       /sdd.review       → comentário de revisão para o PR
+10. REVIEW       /sdd.review           → comentário de revisão para o PR
 11. QUALITY GATE quality-gate.yml      → lint → test → security-scan → build
-12. CHANGELOG    /sdd.changelog    → CHANGELOG.md atualizado
-13. STANDUP      /sdd.standup      → resumo para o time
+12. CHANGELOG    /sdd.changelog        → CHANGELOG.md atualizado
 ```
 
 Cada passo tem um responsável claro (agente ou comando) e um artefato de saída verificável. Nenhum passo pode ser pulado sem registrar o motivo.
@@ -128,7 +127,7 @@ on:
 - Cobertura mínima atingida
 - Nenhum TODO ou placeholder de implementação no código de produção
 
-### OPS → Merge (passos 11 → 12)
+### OPS → Merge (passos 11 → 12 → merge)
 
 - Quality gate em verde (lint, test, security-scan, build)
 - Nenhum finding BLOCKER do security-auditor em aberto
@@ -173,7 +172,6 @@ Cruzamento de responsabilidades é um anti-padrão. Se um agente precisar sair d
   sdd.drift.md          ← detecta divergência spec/implementação
   sdd.review.md         ← passo 10
   sdd.changelog.md      ← passo 12
-  sdd.standup.md        ← passo 13
 
 .github/workflows/
   quality-gate.yml      ← passo 11 (configure antes de ativar)
